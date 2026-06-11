@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Protect — PRD · בוט WhatsApp + לוח בקרה</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{ --rp-navy:#0e2540; --rp-navy-2:#13304f; --rp-blue:#2563eb; --rp-blue-d:#1d4ed8; --rp-accent:#f59e0b; --rp-red:#dc2626; }
+  *{font-family:'Rubik',system-ui,sans-serif;}
+  body{margin:0;color:#0f172a;background:#fff;}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;}
+  .fight{background:
+      radial-gradient(120% 80% at 50% -10%, rgba(245,158,11,.12), transparent 60%),
+      linear-gradient(180deg,#0b1d34 0%, var(--rp-navy) 45%, var(--rp-navy-2) 100%);}
+  .prod{background:radial-gradient(120% 100% at 85% 0,#1d4ed8 0,var(--rp-navy) 55%);}
+  .grid-lines{background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:34px 34px;}
+  .stat-num{font-weight:900;line-height:.92;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .reveal{opacity:0;transform:translateY(22px);transition:all .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .pulse-dot{animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.55)}70%{box-shadow:0 0 0 12px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+  .chip{background:#f1f5f9;color:#475569;}
+  .chip-d{background:rgba(255,255,255,.08);color:#cbd5e1;border:1px solid rgba(255,255,255,.12);}
+  .glow{text-shadow:0 0 30px rgba(245,158,11,.35);}
+  .code-chip{font-family:ui-monospace,Consolas,monospace;background:#eef4ff;color:var(--rp-blue-d);border-radius:6px;padding:1px 7px;font-size:12px;font-weight:700;}
+</style>
+</head>
+<body>
+
+<div style="background:#0b1d34;color:#94a3b8;font-size:11px;text-align:center;padding:6px;letter-spacing:.05em">מסמך פנימי · PRD · אפיון בוט WhatsApp + לוח בקרה · טיוטה v0.1 · בעלים: יוסי</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-100">
+  <div class="wrap flex items-center justify-between h-16">
+    <div class="flex items-center gap-2 font-black text-[19px]" style="color:var(--rp-navy)">🛡️ Road&nbsp;Protect</div>
+    <nav class="hidden md:flex items-center gap-6 text-[14px] font-medium text-slate-600">
+      <a href="#problem">הבעיה</a><a href="#solution">הפתרון</a><a href="#metric">מדד ההצלחה</a><a href="#reqs">דרישות</a><a href="#rollout">השקה</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <span class="text-[13px] font-extrabold rounded-full px-4 py-2 chip">PRD · טיוטה v0.1</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="fight text-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-lines opacity-70"></div>
+  <div class="wrap relative py-9 md:py-12 grid md:grid-cols-2 gap-7 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-amber-300 mb-5">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-400 pulse-dot inline-block"></span> מסמך דרישות מוצר · רבעון 2, 2026
+      </div>
+      <h1 class="text-[28px] md:text-[42px] font-black leading-[1.07] mb-3 glow">
+        בוט ה-WhatsApp + לוח הבקרה.<br>
+        <span class="text-amber-300">בדיוק מה שצריך להיבנות.</span>
+      </h1>
+      <p class="text-[15px] md:text-[17px] text-slate-200 leading-relaxed mb-5 max-w-xl">
+        אפיון מלא של שני סוכני ה-WhatsApp (יוצא + נכנס) ולוח הבקרה שמודד אותם —
+        כל תרחיש, כל הודעה, כל מסך. המטרה: <b class="text-white">בוט חד-משמעי</b> שאפשר לבנות ישר מהאפיון,
+        ו<b class="text-white">משפך גלוי</b> שמאפשר לכוונן אותו בלי לנחש.
+      </p>
+      <div class="flex flex-wrap gap-2 text-[12.5px]">
+        <span class="chip-d rounded-full px-3 py-1.5 font-bold">7 תרחישי C2B (יוצאים)</span>
+        <span class="chip-d rounded-full px-3 py-1.5 font-bold">1 תרחיש נכנס (B1)</span>
+        <span class="chip-d rounded-full px-3 py-1.5 font-bold">4 מסכי לוח בקרה</span>
+      </div>
+    </div>
+
+    <!-- hero card: the one success metric -->
+    <div class="relative">
+      <div class="bg-white/8 border border-white/15 rounded-3xl p-6 backdrop-blur shadow-2xl">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-[12px] font-extrabold text-amber-300">מדד ההצלחה — מספר אחד</span>
+          <span class="text-[12px] text-slate-300">מוכנוּת לבנייה</span>
+        </div>
+        <div class="flex items-end gap-2 mb-1">
+          <div class="stat-num text-[52px] md:text-[60px] text-white">≤10</div>
+          <div class="text-[15px] font-bold text-slate-300 mb-3 leading-snug">שאלות פתוחות<br>לפני שמתחילים לבנות</div>
+        </div>
+        <p class="text-[13px] text-slate-300 leading-snug mb-5 border-t border-white/10 pt-4">
+          האפיון "טוב" אם אפשר לבנות ישר ממנו — לכל תרחיש יש טריגר, הודעות, תזמון ויציאה, בלי שום פער של "מה עושים כאן?".
+        </p>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="bg-white/5 rounded-xl py-3">
+            <div class="stat-num text-[22px] text-amber-300">≤2%</div>
+            <div class="text-[11px] text-slate-300 mt-1 leading-tight">הסרה / חודש</div>
+          </div>
+          <div class="bg-white/5 rounded-xl py-3">
+            <div class="stat-num text-[22px] text-amber-300">≤1%</div>
+            <div class="text-[11px] text-slate-300 mt-1 leading-tight">משוב שלילי</div>
+          </div>
+          <div class="bg-white/5 rounded-xl py-3">
+            <div class="stat-num text-[22px] text-amber-300">≤0.5%</div>
+            <div class="text-[11px] text-slate-300 mt-1 leading-tight">תלונות / הודעה</div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute -top-3 -left-3 bg-amber-400 text-[#0e2540] text-[12px] font-black rounded-full px-3 py-1 shadow-lg">מעקות איכות</div>
+    </div>
+  </div>
+
+  <!-- HERO KPI BAND -->
+  <div class="relative border-t border-white/10 bg-black/15">
+    <div class="wrap py-4 md:py-5 grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-4 text-center">
+      <div>
+        <div class="stat-num text-[26px] md:text-[34px] text-amber-300"><span data-count="8">0</span></div>
+        <div class="text-[12px] font-bold text-slate-300 mt-0.5 leading-snug">תרחישים מאופיינים מקצה לקצה</div>
+      </div>
+      <div>
+        <div class="stat-num text-[26px] md:text-[34px] text-amber-300"><span data-count="4">0</span></div>
+        <div class="text-[12px] font-bold text-slate-300 mt-0.5 leading-snug">מסכי לוח בקרה</div>
+      </div>
+      <div>
+        <div class="stat-num text-[26px] md:text-[34px] text-amber-300"><span data-count="6">0</span></div>
+        <div class="text-[12px] font-bold text-slate-300 mt-0.5 leading-snug">שאלות שיוסי יוכל לענות לבד</div>
+      </div>
+      <div>
+        <div class="stat-num text-[26px] md:text-[34px] text-amber-300">≤4</div>
+        <div class="text-[12px] font-bold text-slate-300 mt-0.5 leading-snug">שבועות מהקפאה ועד בנייה</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROBLEM ===================== -->
+<section id="problem" class="bg-white">
+  <div class="wrap py-14 md:py-18">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-red-600 mb-4">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-600 pulse-dot inline-block"></span> 1 · הבעיה
+      </div>
+      <h2 class="text-[28px] md:text-[40px] font-black leading-[1.12] text-slate-900 mb-3">שתי בעיות — והן מזינות זו את זו</h2>
+      <p class="text-[15px] md:text-[18px] text-slate-600 leading-relaxed">
+        בלי לוח הבקרה אי אפשר לדעת אם תרחיש עובד. בלי תרחישים נקיים — למשפך אין על מה להישען.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 md:p-7 reveal">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="bg-red-100 text-red-700 text-[12px] font-black rounded-full px-3 py-1">בעיה A</span>
+          <h3 class="text-[19px] md:text-[22px] font-black text-slate-900">עמימות באפיון</h3>
+        </div>
+        <p class="text-[14.5px] text-slate-700 leading-relaxed">
+          התרחישים הקיימים מתארים הודעת פתיחה וענפי תשובה, אבל לא מגדירים: מתי יוצאת הנגיעה השנייה, מתי הרצף נגמר,
+          אילו אירועים נפלטים, מה קורה כשמשתמש כשיר לשני תרחישים בו-זמנית, מהן מגבלות התדירות, מהן שעות השקט, ומהו בכלל "משוב שלילי".
+          כל פער כזה — מישהו ינחש, והפערים הם בדיוק מה שקובע אם הבוט <b>חד</b> או <b>מעצבן</b>.
+        </p>
+      </div>
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 md:p-7 reveal">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="bg-red-100 text-red-700 text-[12px] font-black rounded-full px-3 py-1">בעיה B</span>
+          <h3 class="text-[19px] md:text-[22px] font-black text-slate-900">עיוורון משפך</h3>
+        </div>
+        <p class="text-[14.5px] text-slate-700 leading-relaxed">
+          היום אי אפשר לענות: מתוך מי ששלחנו, כמה ענו לנגיעה 1, לנגיעה 2, כמה המירו, ומי נתן משוב שלילי —
+          בלי חפירה ידנית בלוגים. אין דשבורד, ואין סכמת אירועים שתתמוך בו.
+          החלטות על קופונים, קצב והרחבת קהל מתקבלות <b>לפי תחושה</b>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOLUTION ===================== -->
+<section id="solution" class="prod text-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-lines opacity-40"></div>
+  <div class="wrap relative py-14 md:py-18">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="bg-amber-400 text-[#0e2540] text-[12px] font-extrabold rounded-full px-3 py-1">2 · הפתרון</span>
+      <span class="text-amber-300 text-[13px] font-bold">מה אנחנו בונים</span>
+    </div>
+    <h2 class="text-[30px] md:text-[44px] font-black mb-3 leading-[1.05]">אפיון שלם <span class="text-amber-300">+ משפך גלוי</span></h2>
+    <p class="text-[15px] md:text-[18px] text-slate-200 leading-relaxed max-w-2xl mb-8">
+      ההיפותזה: אפיון רב-נגיעות מלא ומאובזר-אירועים, יחד עם לוח בקרה עברית RTL, יביא לעלייה מדידה בהמרה לכל תרחיש —
+      ולירידה חדה בחיכוך כשבונים את הבוט.
+    </p>
+    <div class="grid md:grid-cols-3 gap-x-8 gap-y-5 max-w-4xl">
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span class="text-[15px]"><b>אפיון רב-נגיעות</b> לכל 8 התרחישים — טריגר, נגיעות, תזמון, ענפים, יציאות.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span class="text-[15px]"><b>אינסטרומנטציה</b> — סכמת אירועים שמודדת כל שלב במשפך.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span class="text-[15px]"><b>לוח בקרה עברית RTL</b> — 4 מסכים, מ"הגענו" ועד המרה או נטישה.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span class="text-[15px]"><b>חוקים חוצי-תרחיש</b> — תדירות, השתקה, שעות שקט, זיהוי מגדר, גילוי AI, קו משפטי, הסלמה.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span class="text-[15px]"><b>נכנס כמנתב כוונה</b> — B1 עם טקסונומיית כוונות ותתי-זרימות.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span class="text-[15px]"><b>הכל בעברית</b> — נוסחי הבוט נשארים עברית; התרגום לאנגלית הוא מעבר נפרד מאוחר יותר.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== METRIC + GUARDRAILS ===================== -->
+<section id="metric" class="bg-white">
+  <div class="wrap py-14 md:py-18">
+    <div class="text-center max-w-2xl mx-auto mb-9">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-blue-700 mb-3">3 · מדדים ומעקות</div>
+      <h2 class="text-[26px] md:text-[38px] font-black text-slate-900 leading-[1.12] mb-3">מדד ראשי אחד, מעקות ברורים</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 mb-6">
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center reveal md:col-span-1">
+        <div class="text-[12px] font-extrabold text-slate-500 mb-1">מדד ראשי</div>
+        <div class="stat-num text-[46px] text-slate-900">≤10</div>
+        <div class="text-[13px] text-slate-600 mt-1 leading-snug">שאלות פתוחות שנותרו לפני שאפשר לבנות מהאפיון</div>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 reveal md:col-span-2">
+        <div class="text-[14px] font-black text-slate-900 mb-3">מדדים משניים</div>
+        <ul class="space-y-2 text-[14px] text-slate-700 leading-relaxed">
+          <li class="flex gap-2"><span class="text-blue-600 font-black">•</span> זמן מהקפאת האפיון ועד תחילת הבנייה — יעד <b>≤4 שבועות</b>.</li>
+          <li class="flex gap-2"><span class="text-blue-600 font-black">•</span> תוך 30 יום מהשקת הדשבורד — יוסי עונה לבד על <b>6 השאלות</b> המרכזיות.</li>
+          <li class="flex gap-2"><span class="text-blue-600 font-black">•</span> שיעור תגובה ל<b>נגיעה-2</b> בכל תרחישי C2B — המדד שאין לנו היום, ועכשיו גלוי.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-center">
+        <div class="stat-num text-[34px] text-amber-600">≤2%</div>
+        <div class="text-[13.5px] font-extrabold text-slate-900 mt-1">הסרה / תרחיש / חודש</div>
+        <p class="text-[12.5px] text-slate-700 mt-1 leading-snug">חצה? הקצב שגוי — מושכים אחורה.</p>
+      </div>
+      <div class="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-center">
+        <div class="stat-num text-[34px] text-amber-600">≤1%</div>
+        <div class="text-[13.5px] font-extrabold text-slate-900 mt-1">משוב שלילי / תרחיש / חודש</div>
+        <p class="text-[12.5px] text-slate-700 mt-1 leading-snug">גבוה מדי? הנוסח לא בסדר.</p>
+      </div>
+      <div class="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-center">
+        <div class="stat-num text-[34px] text-amber-600">≤0.5%</div>
+        <div class="text-[13.5px] font-extrabold text-slate-900 mt-1">יחס תלונות לכלל ההודעות</div>
+        <p class="text-[12.5px] text-slate-700 mt-1 leading-snug">חצה? מאיטים נפח גלובלית.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JOURNEYS ===================== -->
+<section id="journey" class="bg-slate-50 border-y border-slate-100">
+  <div class="wrap py-14 md:py-18">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-blue-700 mb-3">4 · מסעות משתמש</div>
+      <h2 class="text-[26px] md:text-[38px] font-black text-slate-900 leading-[1.12]">שני מסעות מקבילים</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <!-- build journey -->
+      <div class="rounded-3xl bg-white border border-slate-200 p-6 md:p-7">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl">🛠️</span>
+          <h3 class="text-[18px] font-black text-slate-900">מסע הבנייה</h3>
+        </div>
+        <ol class="space-y-3 text-[14px] text-slate-700">
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white text-[12px] font-black flex items-center justify-center">1</span><span>מקבלים <span class="code-chip">bot-spec/</span> + <span class="code-chip">dashboard-spec/</span> + מוקאפ.</span></li>
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white text-[12px] font-black flex items-center justify-center">2</span><span>קוראים קודם את <span class="code-chip">00_overview</span> — המסגרת.</span></li>
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white text-[12px] font-black flex items-center justify-center">3</span><span>כל תרחיש עצמאי — טריגר, נגיעות, ענפים, אירועים, יציאות.</span></li>
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white text-[12px] font-black flex items-center justify-center">4</span><span>קוראים את החוקים חוצי-התרחיש שחלים על כולם.</span></li>
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white text-[12px] font-black flex items-center justify-center">5</span><span>בונים — בתקווה <b>פחות מ-10</b> שאלות חוזרות.</span></li>
+        </ol>
+      </div>
+
+      <!-- Yossi dashboard journey -->
+      <div class="rounded-3xl bg-white border border-slate-200 p-6 md:p-7">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl">📊</span>
+          <h3 class="text-[18px] font-black text-slate-900">מסע יוסי (לוח הבקרה)</h3>
+        </div>
+        <ol class="space-y-3 text-[14px] text-slate-700">
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white text-[12px] font-black flex items-center justify-center">1</span><span><b>סקירה כללית</b> — 7 תרחישים: הגענו ← ת1 ← ת2 ← ת3 ← המרה ← הסרה. 7/30/90 יום.</span></li>
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white text-[12px] font-black flex items-center justify-center">2</span><span><b>פירוט תרחיש</b> — המרה לפי נגיעה, דוגמאות תגובות, משוב שלילי (שם + טלפון), התנגדויות מובילות.</span></li>
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white text-[12px] font-black flex items-center justify-center">3</span><span><b>משתמשים</b> — מי ענה לאיזו נגיעה, מי באמצע רצף, מי הוסר, מי נתן משוב. חיפוש + ייצוא.</span></li>
+          <li class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white text-[12px] font-black flex items-center justify-center">4</span><span><b>קוהורטות</b> — Trademobile-warm מול קר מול נושר, זה לצד זה.</span></li>
+        </ol>
+        <a href="dashboard mockup" onclick="return false" class="mt-4 inline-block text-[12.5px] text-blue-600 font-bold">מוקאפ כל 4 המסכים: <span class="code-chip">mockups/dashboard.html</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REQUIREMENTS ===================== -->
+<section id="reqs" class="bg-white">
+  <div class="wrap py-14 md:py-18">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-blue-700 mb-3">5 · דרישות</div>
+      <h2 class="text-[26px] md:text-[38px] font-black text-slate-900 leading-[1.12]">Must · Should · Won't</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 items-start">
+      <!-- MUST -->
+      <div class="rounded-3xl border-2 border-blue-200 bg-blue-50/40 p-6">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-[17px] font-black text-blue-800">חובה ל-v1</h3>
+          <span class="bg-blue-600 text-white text-[11px] font-black rounded-full px-2.5 py-1">לא עולה בלי זה</span>
+        </div>
+        <div class="text-[11px] font-black text-slate-500 mb-1">צד האפיון</div>
+        <ul class="space-y-1.5 text-[13px] text-slate-700 mb-3">
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R1</b> טריגר מפורש (לוגי, לא פרוזה) לכל תרחיש.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R2</b> נגיעה 1/2/3 עם תזמון — או "נגיעה יחידה" עם נימוק.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R3</b> תנאי יציאה (ענה/המיר/הוסר/הושתק/פג).</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R4</b> אירועים נפלטים לכל נגיעה (שמות קנוניים).</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R5</b> חוצי-תרחיש: תדירות, השתקה, הסרה, שעות שקט, שבת, מגדר, גילוי AI, קו משפטי, הסלמה.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R6</b> B1 עם טקסונומיית כוונות ותתי-זרימות.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R7</b> כל הנוסח עברית RTL ובקול המותג.</span></li>
+        </ul>
+        <div class="text-[11px] font-black text-slate-500 mb-1">צד הדשבורד</div>
+        <ul class="space-y-1.5 text-[13px] text-slate-700">
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R8</b> סכמת אירועים: הגעה, מסירה, קריאה, תגובה, המרה, הסרה, משוב, הסלמה, סיום-רצף.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R9</b> מודל משפך לכל תרחיש.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R10</b> אפיון מסכים: סקירה, פירוט, משתמשים, קוהורטות.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R11</b> מוקאפ HTML עברית RTL לכל 4 המסכים.</span></li>
+          <li class="flex gap-2"><span class="text-blue-600">✓</span><span><b>R12</b> הגדרת "משוב שלילי" מדויקת — אילו ביטויים/אותות, לא "נראה לא מרוצה".</span></li>
+        </ul>
+      </div>
+
+      <!-- SHOULD -->
+      <div class="rounded-3xl border border-slate-200 bg-white p-6">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-[17px] font-black text-slate-800">רצוי (v1.1 / מהיר-אחרי)</h3>
+          <span class="chip text-[11px] font-black rounded-full px-2.5 py-1">נחמד שיהיה</span>
+        </div>
+        <ul class="space-y-2 text-[13px] text-slate-700">
+          <li class="flex gap-2"><span class="text-amber-500">◇</span><span><b>R13</b> מקומות ל-A/B בכל נגיעה (אינסטרומנטציה מהיום הראשון).</span></li>
+          <li class="flex gap-2"><span class="text-amber-500">◇</span><span><b>R14</b> צ'קליסט איכות לכל נגיעה (אורך, מגדר, קו משפטי) בתוך כל קובץ.</span></li>
+          <li class="flex gap-2"><span class="text-amber-500">◇</span><span><b>R15</b> מוקאפ עם מספרים אמיתיים (לא אפסים) כדי שיוסי יגיב לפריסה.</span></li>
+        </ul>
+      </div>
+
+      <!-- WON'T -->
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-[17px] font-black text-slate-500">לא בסבב הזה</h3>
+          <span class="bg-slate-200 text-slate-600 text-[11px] font-black rounded-full px-2.5 py-1">נדחה</span>
+        </div>
+        <ul class="space-y-2 text-[13px] text-slate-500">
+          <li class="flex gap-2"><span>✕</span><span><b>R16</b> התראות בזמן אמת על חריגות מדד.</span></li>
+          <li class="flex gap-2"><span>✕</span><span><b>R17</b> צלילה עד לוג ברמת הודעה בודדת — רק עד רמת משתמש.</span></li>
+          <li class="flex gap-2"><span>✕</span><span><b>R18</b> תרגום נוסחי הבוט לאנגלית — אחרי הקפאת האפיון.</span></li>
+          <li class="flex gap-2"><span>✕</span><span><b>R19</b> הרחבת B1 מעבר לניתוב כוונה.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EDGE CASES ===================== -->
+<section class="bg-slate-50 border-y border-slate-100">
+  <div class="wrap py-14 md:py-16">
+    <div class="text-center max-w-2xl mx-auto mb-9">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-red-600 mb-3">6 · מקרי קצה ושגיאות</div>
+      <h2 class="text-[24px] md:text-[34px] font-black text-slate-900 leading-[1.12]">מה קורה כשמשהו משתבש</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">כשיר לשני תרחישים</div><p class="text-[12.5px] text-slate-600 leading-snug">מטריצת ההשתקה קובעת מי מנצח (דוח טרי מנצח אפסייל).</p></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">הסרה באמצע רצף</div><p class="text-[12.5px] text-slate-600 leading-snug">כל הנגיעות העתידיות בכל התרחישים מבוטלות ונרשמות.</p></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">שעות שקט באמצע</div><p class="text-[12.5px] text-slate-600 leading-snug">הנגיעה נדחית לחלון הפתוח הבא — לא נשלחת בלילה.</p></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">כשל מסירה בוואטסאפ</div><p class="text-[12.5px] text-slate-600 leading-snug">מסומן "לא ניתן למסירה", הרצף נעצר, בלי ניסיון חוזר.</p></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">תגובה לרצף שנגמר</div><p class="text-[12.5px] text-slate-600 leading-snug">מטופל דרך זרימת B1 הנכנסת, לא חידוש הרצף הישן.</p></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">תוכן פוגעני / איום משפטי</div><p class="text-[12.5px] text-slate-600 leading-snug">הסלמה לאדם, משיכה מהרצף.</p></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">כשל בהחלפת משתנה</div><p class="text-[12.5px] text-slate-600 leading-snug">דילוג על הנגיעה או פתיח חלופי — מוגדר פר-תרחיש.</p></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4"><div class="text-[13.5px] font-black text-slate-900 mb-1">קופון כבר מומש</div><p class="text-[12.5px] text-slate-600 leading-snug">C7 מושתק עבור אותו משתמש.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ROLLOUT ===================== -->
+<section id="rollout" class="prod text-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-lines opacity-40"></div>
+  <div class="wrap relative py-14 md:py-18">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="bg-amber-400 text-[#0e2540] text-[12px] font-extrabold rounded-full px-3 py-1">7 · תוכנית השקה</span>
+    </div>
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+      <div class="flex gap-4"><div class="stat-num text-[22px] text-amber-300 w-8 shrink-0">01</div><div><div class="font-black text-[15px]">סקירה פנימית</div><p class="text-[13.5px] text-slate-300 leading-snug">יוסי עובר על כל קובץ אפיון כשהוא נוחת. הערות ← תיקונים.</p></div></div>
+      <div class="flex gap-4"><div class="stat-num text-[22px] text-amber-300 w-8 shrink-0">02</div><div><div class="font-black text-[15px]">הקפאת אפיון</div><p class="text-[13.5px] text-slate-300 leading-snug">כשהכל מאושר — <span class="code-chip">bot-spec/</span> ו-<span class="code-chip">dashboard-spec/</span> מסומנים v1.0.</p></div></div>
+      <div class="flex gap-4"><div class="stat-num text-[22px] text-amber-300 w-8 shrink-0">03</div><div><div class="font-black text-[15px]">תחילת בנייה</div><p class="text-[13.5px] text-slate-300 leading-snug">בונים מהאפיון; סופרים שאלות פתוחות מול מדד ההצלחה.</p></div></div>
+      <div class="flex gap-4"><div class="stat-num text-[22px] text-amber-300 w-8 shrink-0">04</div><div><div class="font-black text-[15px]">עלייה ב-Shadow (5%)</div><p class="text-[13.5px] text-slate-300 leading-snug">הבוט רץ על 5% מהכשירים לכל תרחיש; הדשבורד מודד; משווים לבוט הקיים.</p></div></div>
+      <div class="flex gap-4"><div class="stat-num text-[22px] text-amber-300 w-8 shrink-0">05</div><div><div class="font-black text-[15px]">מעבר לתעבורה מלאה</div><p class="text-[13.5px] text-slate-300 leading-snug">פר-תרחיש: שיעור תגובה לנגיעה-1 ≥ בסיס <b>וגם</b> הסרה ≤2%. לא הכל בבת אחת.</p></div></div>
+      <div class="flex gap-4"><div class="stat-num text-[22px] text-amber-300 w-8 shrink-0">06</div><div><div class="font-black text-[15px]">תוכנית נסיגה</div><p class="text-[13.5px] text-slate-300 leading-snug">קוהורטת shadow מבוקרת — תרחיש שחוצה מעקה מנותב חזרה לבוט הישן או שמעצרים נפח עד אבחון.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEGAL ===================== -->
+<section class="bg-white">
+  <div class="wrap py-14 md:py-16">
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-blue-700 mb-3">8 · משפטי ורגולציה</div>
+      <h2 class="text-[24px] md:text-[34px] font-black text-slate-900 leading-[1.12]">הקווים שאסור לחצות</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex gap-3"><span class="text-xl">⚖️</span><p class="text-[13.5px] text-slate-700 leading-relaxed">כל תרחיש תואם את <span class="code-chip">LEGAL_DISCLAIMER</span>. בלי "עו"ד מייצגים", בלי "מבטיחים ביטול", בלי "מגישים בשמך".</p></div>
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex gap-3"><span class="text-xl">🤖</span><p class="text-[13.5px] text-slate-700 leading-relaxed">גילוי AI: כששואלים מי מולם — "אני סוכן AI דיגיטלי / העוזר הדיגיטלי של Road Protect". נבדק בכל תרחיש.</p></div>
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex gap-3"><span class="text-xl">🛑</span><p class="text-[13.5px] text-slate-700 leading-relaxed">הסרה מכובדת תוך מחזור הודעה אחד.</p></div>
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex gap-3"><span class="text-xl">🌙</span><p class="text-[13.5px] text-slate-700 leading-relaxed">שעות שקט לפי נורמות בישראל: 22:00–08:00 בחול, וכל השבת (שישי 17:00 → שבת 21:00).</p></div>
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex gap-3"><span class="text-xl">🗄️</span><p class="text-[13.5px] text-slate-700 leading-relaxed">שמירת מזהי משתמש כל עוד פעיל או 24 חודשים אחרי נטישה — הגדול מביניהם. מעבר לכך: אנונימיזציה.</p></div>
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex gap-3"><span class="text-xl">📜</span><p class="text-[13.5px] text-slate-700 leading-relaxed">חוק הגנת הפרטיות: פנייה יוצאת ללקוחות/לידים מותרת על בסיס הסכמה בהרשמה. קר (C1) דורש עיגון יחסי-עבר ("השארת אצלנו פרטים").</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OPEN QUESTIONS + SCOPE ===================== -->
+<section class="bg-slate-50 border-t border-slate-100">
+  <div class="wrap py-14 md:py-16">
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- open questions -->
+      <div>
+        <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-amber-700 mb-3">9 · שאלות פתוחות</div>
+        <h3 class="text-[20px] md:text-[24px] font-black text-slate-900 mb-4">מה עוד צריך החלטה</h3>
+        <ul class="space-y-2.5 text-[13.5px] text-slate-700">
+          <li class="flex gap-2"><span class="text-amber-500 font-black">?</span><span><b>ערוץ מסירה</b> — WhatsApp Cloud API / 360dialog / Twilio? משפיע על דיוק אירועי קריאה.</span></li>
+          <li class="flex gap-2"><span class="text-amber-500 font-black">?</span><span><b>CRM מקור-אמת</b> — מאיפה הבוט קורא/כותב, ואיפה חיה מצב ההשתקה.</span></li>
+          <li class="flex gap-2"><span class="text-emerald-600 font-black">✓</span><span><b>קופון — הוכרע:</b> קוד אחד <span class="code-chip">SAVE30</span> = 30% על הערעור הבודד (₪49), ב-C7 בלבד. אין סולם, אין 50%, אין על VIP.</span></li>
+          <li class="flex gap-2"><span class="text-amber-500 font-black">?</span><span><b>"משוב שלילי"</b> — ביטוי תלונה, בקשת החזר/ביטול, "תפסיקו", איום משפטי. לאשר שהרשימה מלאה.</span></li>
+          <li class="flex gap-2"><span class="text-amber-500 font-black">?</span><span><b>פיד Trademobile</b> — מה הטריות? משפיע אם C4 בתוך 24ש' ריאלי.</span></li>
+          <li class="flex gap-2"><span class="text-amber-500 font-black">?</span><span><b>מספרי בסיס אמיתיים</b> — לאימות שמספרי המוקאפ ריאליים (חשוב להשקה, לא לאפיון).</span></li>
+        </ul>
+      </div>
+      <!-- out of scope -->
+      <div>
+        <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-slate-500 mb-3">10 · מחוץ לסקופ</div>
+        <h3 class="text-[20px] md:text-[24px] font-black text-slate-900 mb-4">לא בסבב הזה — ואומרים את זה במפורש</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip rounded-full px-4 py-2 text-[13px] font-bold">תרגום נוסחים לאנגלית</span>
+          <span class="chip rounded-full px-4 py-2 text-[13px] font-bold">תרחישים חדשים (רק 8 הקיימים)</span>
+          <span class="chip rounded-full px-4 py-2 text-[13px] font-bold">הודעות לשותפי B2B</span>
+          <span class="chip rounded-full px-4 py-2 text-[13px] font-bold">SMS / אימייל</span>
+          <span class="chip rounded-full px-4 py-2 text-[13px] font-bold">התחברות / הרשאות לדשבורד</span>
+          <span class="chip rounded-full px-4 py-2 text-[13px] font-bold">התראות בזמן אמת</span>
+        </div>
+        <div class="mt-6 rounded-2xl bg-white border border-slate-200 p-5">
+          <div class="text-[13px] font-black text-slate-900 mb-1">תוכנית התמחור (לעדכון)</div>
+          <p class="text-[13px] text-slate-600 leading-relaxed">איתור ₪99/שנה · <b>VIP ₪35/חודש</b> (חיוב שנתי חוסך 20%) · ערעור נקודתי ₪49. הקופון <span class="code-chip">SAVE30</span> חל על הערעור בלבד.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-[#0b1d34] text-slate-300">
+  <div class="wrap py-10">
+    <div class="flex flex-col md:flex-row justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-2 font-black text-[18px] text-white mb-2">🛡️ Road Protect</div>
+        <p class="text-[13px] text-slate-400 max-w-sm leading-relaxed">PRD · אפיון בוט WhatsApp + לוח בקרה · בבעלות יוסי. לאחר אישור — מוקפא (v1.0) ועובר לבנייה יחד עם bot-spec ו-dashboard-spec.</p>
+      </div>
+      <div class="text-[13px] text-slate-400 leading-relaxed max-w-md">
+        Road Protect מספקת סביבה דיגיטלית וכלים לניהול ולניסוח עצמי של מסמכי ערעור בקשר לדוחות תנועה. השירות אינו מהווה ייעוץ משפטי ואינו ניתן במסגרת משרד עורכי דין. האחריות על הגשת הערעור היא של המשתמש.
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-8 pt-5 text-[12px] text-slate-500 flex flex-wrap justify-between gap-2">
+      <span>© 2026 רוד פרוטקט בע״מ · מסמך פנימי</span>
+      <span>עודכן: רבעון 2, 2026 · v0.1 טיוטה</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function animateTo(el, target, dur){
+    var t0=performance.now();
+    function tick(n){var p=Math.min(1,(n-t0)/dur),e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*e).toLocaleString('en-US');
+      if(p<1)requestAnimationFrame(tick);}
+    requestAnimationFrame(tick);
+  }
+  function animateCount(el){animateTo(el,+el.dataset.count,1100);}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting){
+      en.target.classList.add('in');
+      en.target.querySelectorAll&&en.target.querySelectorAll('[data-count]').forEach(function(c){if(!c.dataset.done){c.dataset.done=1;animateCount(c);}});
+      if(en.target.dataset&&en.target.dataset.count&&!en.target.dataset.done){en.target.dataset.done=1;animateCount(en.target);}
+    }
+  });},{threshold:.3});
+  document.querySelectorAll('.reveal,[data-count]').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>app.roadprotect.co.il — פריסה קיימת + סקשן פקטור הפחד (מוקאפ)</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{ --rp-navy:#0e2540; --rp-navy-2:#13304f; --rp-blue:#2563eb; --rp-blue-d:#1d4ed8; --rp-accent:#f59e0b; }
+  *{font-family:'Rubik',system-ui,sans-serif;}
+  body{margin:0;color:#0f172a;background:#fff;}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;}
+  .btn-blue{background:var(--rp-blue);color:#fff;box-shadow:0 12px 26px -10px rgba(37,99,235,.6);}
+  .btn-blue:active{transform:translateY(1px);}
+  .btn-amber{background:var(--rp-accent);color:#0e2540;box-shadow:0 14px 30px -10px rgba(245,158,11,.55);}
+  .btn-ghost{background:#eff4ff;color:var(--rp-blue-d);}
+  /* fear / urgency section */
+  .fear{background:
+      radial-gradient(120% 80% at 50% -10%, rgba(245,158,11,.10), transparent 60%),
+      linear-gradient(180deg,#0b1d34 0%, var(--rp-navy) 45%, var(--rp-navy-2) 100%);}
+  .grid-lines{background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:34px 34px;}
+  .stat-num{font-weight:900;line-height:.92;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .reveal{opacity:0;transform:translateY(22px);transition:all .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .pulse-dot{animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.55)}70%{box-shadow:0 0 0 12px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+  .hero{background:linear-gradient(180deg,#f7faff 0,#eef4ff 100%);}
+  .chip{background:#f1f5f9;color:#475569;}
+  .prod{background:radial-gradient(120% 100% at 85% 0,#1d4ed8 0,var(--rp-navy) 55%);}
+  .field{width:100%;border:1.5px solid #cbd5e1;border-radius:14px;padding:13px 15px;font-size:15px;color:#0f172a;background:#fff;}
+  .field::placeholder{color:#94a3b8;}
+  .field:focus{outline:none;border-color:var(--rp-blue);box-shadow:0 0 0 4px rgba(37,99,235,.15);}
+</style>
+</head>
+<body>
+
+<div style="background:#0b1d34;color:#94a3b8;font-size:11px;text-align:center;padding:6px;letter-spacing:.05em">מוקאפ — פריסת app.roadprotect.co.il + סקשן "פקטור הפחד" כשדרוג לבלוק ה-urgency (מסומן ★)</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-100">
+  <div class="wrap flex items-center justify-between h-16">
+    <div class="flex items-center gap-2 font-black text-[19px]" style="color:var(--rp-navy)">🛡️ Road&nbsp;Protect</div>
+    <nav class="hidden md:flex items-center gap-6 text-[14px] font-medium text-slate-600">
+      <a href="#plans">מחירון</a><a href="#how">אימותים</a><a href="#">ערעור</a><a href="#">מגזין</a><a href="#">צור קשר</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#" class="hidden sm:block text-[13px] font-bold rounded-full px-4 py-2 btn-ghost">הגש ערעור</a>
+      <a href="#" class="text-[13px] font-bold rounded-full px-4 py-2 text-white" style="background:#25d366">וואטסאפ</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 text-[12px] font-bold text-blue-700 bg-blue-100 rounded-full px-3 py-1 mb-5">היערכו לרפורמה החדשה</div>
+      <h1 class="text-[32px] md:text-[44px] font-black leading-[1.1] mb-4" style="color:var(--rp-navy)">סורקים עבורך קנסות אבודים מול כלל הרשויות</h1>
+      <p class="text-[16px] md:text-[18px] text-slate-600 leading-relaxed mb-5">
+        מערכת חכמה לאיתור דוחות תנועה וחניה שנרשמו על שמך. רישום חד-פעמי, והמערכת מתריעה בוואטסאפ ובמייל על כל דוח — 24/7, מול כל העיריות והמשטרה.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#" class="btn-blue text-center text-[16px] font-extrabold rounded-2xl px-7 py-4">תבדקו עבורי עכשיו ←</a>
+        <a href="#" class="btn-ghost text-center text-[16px] font-bold rounded-2xl px-7 py-4">הגש ערעור</a>
+      </div>
+      <p class="text-[12px] text-slate-400 mt-4">Road Protect אינו משרד עורכי דין · כלי לניסוח והגשת ערעור בשמך</p>
+    </div>
+    <div class="hidden md:block">
+      <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-xl">
+        <div class="flex items-center gap-2 text-blue-600 text-[13px] font-bold mb-3"><span class="w-2.5 h-2.5 rounded-full bg-red-500 pulse-dot inline-block"></span> רדאר פעיל · סורק עכשיו</div>
+        <div class="bg-slate-50 rounded-2xl p-4 mb-3"><div class="text-[12px] text-slate-400">התקבלה התראה</div><div class="font-bold text-slate-800">דוח חדש אותר על שמך ⚠️</div><div class="text-[13px] text-slate-500 mt-1">₪250 · חניה · עיריית תל אביב</div></div>
+        <div class="bg-blue-600 text-white rounded-2xl p-4"><div class="text-[12px] text-blue-100">סטטוס</div><div class="font-bold">המומחים שלנו מטפלים בערעור</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MUNICIPALITY STRIP ===================== -->
+<section class="bg-white border-y border-slate-100">
+  <div class="wrap py-7 text-center">
+    <div class="text-[12px] font-bold text-slate-400 mb-4">סורקים מול משטרת ישראל ומעל 20 עיריות</div>
+    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] font-bold text-slate-500">
+      <span class="chip rounded-full px-3 py-1">משטרת ישראל</span><span class="chip rounded-full px-3 py-1">תל אביב</span><span class="chip rounded-full px-3 py-1">ירושלים</span><span class="chip rounded-full px-3 py-1">חיפה</span><span class="chip rounded-full px-3 py-1">ראשון לציון</span><span class="chip rounded-full px-3 py-1">פתח תקווה</span><span class="chip rounded-full px-3 py-1">נתניה</span><span class="chip rounded-full px-3 py-1">אשדוד</span><span class="chip rounded-full px-3 py-1">חולון</span><span class="chip rounded-full px-3 py-1">רמת גן</span><span class="chip rounded-full px-3 py-1">+ עוד</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ★ FEAR FACTOR + FUTURE PRODUCT (MAX) + WAITLIST — בלוק אחד ===== -->
+<section id="urgency" class="bg-slate-50">
+  <div class="wrap py-14 md:py-20">
+    <div class="max-w-3xl mx-auto bg-white rounded-[28px] shadow-[0_30px_80px_-30px_rgba(15,23,42,.3)] border border-slate-100 overflow-hidden">
+
+      <!-- camera reality (dark text, readable) -->
+      <div class="px-6 md:px-10 pt-9 pb-7" style="background:linear-gradient(180deg,#fff 0,#fff7f5 100%)">
+        <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-red-600 mb-4">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-600 pulse-dot inline-block"></span> המציאות החדשה בכבישים · 2026
+        </div>
+        <h2 class="text-[26px] md:text-[36px] font-black leading-[1.15] text-slate-900 mb-3">המצלמות כבר לא עוצרות אותך — הן פשוט שולחות דוח.</h2>
+        <p class="text-[15px] md:text-[17px] leading-relaxed text-slate-700 max-w-2xl">
+          מצלמות חדשות על עמודי התאורה, אכיפה דיגיטלית מרחוק, והאכיפה בפועל מתחילה כבר עכשיו.
+          הדוחות יגיעו — השאלה היחידה היא אם תהיה מוכן, או שתגלה אותם כשכבר יהיה מאוחר.
+        </p>
+        <div class="grid grid-cols-2 gap-3 mt-7">
+          <div class="rounded-2xl border border-slate-200 bg-white p-4"><div class="stat-num text-[34px] text-red-600" data-count="500">0</div><div class="text-[14px] font-extrabold text-slate-900 -mt-1">מצלמות "מהירות ממוצעת"</div><p class="text-[12.5px] text-slate-600 mt-1 leading-snug">על עמודי תאורה, מודדות אותך לאורך כל המקטע. להאט רגע לפני המצלמה כבר לא עוזר.</p></div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-4"><div class="stat-num text-[34px] text-red-600"><span data-count="80">0</span>%</div><div class="text-[14px] font-extrabold text-slate-900 -mt-1">מהדוחות — בלי שוטר</div><p class="text-[12.5px] text-slate-600 mt-1 leading-snug">מונפקים דיגיטלית מרחוק. הדוח פשוט נוחת אצלך הביתה, מתי שלא תצפה.</p></div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-4"><div class="stat-num text-[34px] text-red-600">Q3</div><div class="text-[14px] font-extrabold text-slate-900 -mt-1">האכיפה מתחילה ב-2026</div><p class="text-[12.5px] text-slate-600 mt-1 leading-snug">בעיקר בצירים הבין-עירוניים הארוכים. זה כבר לא תיאוריה — זה עכשיו.</p></div>
+          <div class="rounded-2xl border border-red-200 bg-red-50 p-4"><div class="stat-num text-[34px] text-red-600"><span data-count="50">0</span>%</div><div class="text-[14px] font-extrabold text-slate-900 -mt-1">ריבית פיגורים + כפל קנס</div><p class="text-[12.5px] text-slate-600 mt-1 leading-snug">דוח שפספסת תופח לבד — נקודות, שלילה, ובסוף עיקול חשבון הבנק.</p></div>
+        </div>
+        <p class="text-[16px] md:text-[18px] font-bold text-slate-900 mt-7 leading-snug">וכשדוח הופך לנקודות, לשלילת רישיון או אפילו לתביעה — <span style="color:var(--rp-blue)">מי נלחם בשבילך, ומי משלם על עורך הדין?</span></p>
+      </div>
+
+      <!-- future product -->
+      <div class="prod text-white px-6 md:px-10 py-9">
+        <div class="flex items-center gap-3 mb-3"><span class="bg-amber-400 text-[#0e2540] text-[12px] font-extrabold rounded-full px-3 py-1">בקרוב</span><span class="text-amber-300 text-[13px] font-bold">המוצר החדש שלנו</span></div>
+        <h3 class="text-[28px] md:text-[36px] font-black mb-2">Road Protect <span class="text-amber-300">MAX</span></h3>
+        <p class="text-[15px] md:text-[16px] text-slate-200 leading-relaxed max-w-2xl mb-6">ההגנה המלאה ביותר שיש לנו. כל מה שיש ב-VIP — פלוס <b>מגן משפטי</b> שמכסה גם את עלויות עורך הדין. כדי שגם אם זה מגיע לבית משפט, אתה לא לבד ולא מוציא שקל מהכיס.</p>
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-3 text-[15px]">
+          <div class="flex gap-2.5"><span class="text-amber-300 font-black">✓</span><span>כל יתרונות <b>VIP</b> — ניטור 24/7, התראות, ערעורים בלתי מוגבלים, ספיגת ריבית פיגורים ותשלומים מול הרשויות</span></div>
+          <div class="flex gap-2.5"><span class="text-amber-300 font-black">✓</span><span><b>ביטוח הוצאות משפטיות</b> — אם דוח הופך לתביעה או מגיע לבית משפט, עלויות עורך הדין מכוסות</span></div>
+          <div class="flex gap-2.5"><span class="text-amber-300 font-black">✓</span><span><b>ליווי עו״ד אישי</b> בתיקים מורכבים ובהליכי שלילת רישיון</span></div>
+          <div class="flex gap-2.5"><span class="text-amber-300 font-black">✓</span><span>שקט מוחלט — מהדוח הקטן ועד ההליך המשפטי, יש לך גב</span></div>
+        </div>
+      </div>
+
+      <!-- waitlist form -->
+      <div class="px-6 md:px-10 py-9 bg-white">
+        <div id="wl-form">
+          <h3 class="text-[22px] md:text-[26px] font-black text-slate-900 mb-1">היו הראשונים לקבל את MAX</h3>
+          <p class="text-[14px] text-slate-600 mb-6">הירשמו לרשימת ההמתנה — נעדכן אתכם ראשונים בהשקה, עם תנאים מיוחדים לנרשמים מראש.</p>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div><label class="block text-[13px] font-bold text-slate-800 mb-1.5">שם מלא</label><input class="field" type="text" placeholder="ישראל ישראלי"></div>
+            <div><label class="block text-[13px] font-bold text-slate-800 mb-1.5">טלפון (וואטסאפ)</label><input class="field" type="tel" placeholder="050-0000000"></div>
+            <div><label class="block text-[13px] font-bold text-slate-800 mb-1.5">אימייל</label><input class="field" type="email" placeholder="name@email.com"></div>
+            <div><label class="block text-[13px] font-bold text-slate-800 mb-1.5">מספר רכב <span class="font-normal text-slate-400">(אופציונלי)</span></label><input class="field" type="text" placeholder="12-345-67"></div>
+          </div>
+          <label class="flex items-start gap-2.5 mt-4 text-[13px] text-slate-600"><input type="checkbox" class="mt-1 w-4 h-4 accent-blue-600"><span>אני מאשר/ת קבלת עדכון על השקת המוצר ותנאים מיוחדים לנרשמים מראש.</span></label>
+          <button onclick="document.getElementById('wl-form').style.display='none';document.getElementById('wl-done').style.display='block';" class="btn-amber w-full md:w-auto text-center text-[16px] font-extrabold rounded-2xl px-8 py-4 mt-5">שריינו לי מקום ברשימת ההמתנה ←</button>
+        </div>
+        <div id="wl-done" style="display:none" class="text-center py-6">
+          <div class="text-5xl mb-3">🎉</div><h3 class="text-[22px] font-black text-slate-900 mb-1">מעולה, נשמרת ברשימה!</h3><p class="text-[15px] text-slate-600">נעדכן אותך מהראשונים ברגע ש-Road Protect MAX יוצא לדרך.</p>
+        </div>
+        <p class="text-[11.5px] text-slate-500 leading-snug mt-7 border-t border-slate-100 pt-4">* המוצר בפיתוח וטרם זמין לרכישה. Road Protect אינו משרד עורכי דין; כיסוי ההוצאות המשפטיות יינתן באמצעות שותף ביטוח/עורכי דין מורשה, ותנאיו הסופיים ייקבעו בהשקה.<br>מקורות נתוני האכיפה: ynet, TheMarker, כלכליסט, N12, law.co.il, רשות הבטיחות בדרכים (2026).</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURES (reform) ===================== -->
+<section class="bg-white">
+  <div class="wrap py-14 md:py-20">
+    <h2 class="text-[26px] md:text-[34px] font-black text-center mb-3" style="color:var(--rp-navy)">מה השתנה ברפורמה — ולמה זה נוגע לך</h2>
+    <p class="text-center text-slate-500 mb-10 max-w-2xl mx-auto">הרפורמה נכנסה לתוקף בפברואר 2026. שלוש סיבות מרכזיות לבדוק קנסות דווקא עכשיו:</p>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><div class="text-3xl mb-3">📈</div><div class="font-extrabold text-[18px] mb-1">כפל קנס אוטומטי</div><p class="text-[14px] text-slate-500 leading-snug">דוח שלא מטופל בזמן מוכפל אוטומטית — בלי שתדע, ובלי דרך חזרה.</p></div>
+      <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><div class="text-3xl mb-3">⚖️</div><div class="font-extrabold text-[18px] mb-1">הליך מנהלי — בלי משפט</div><p class="text-[14px] text-slate-500 leading-snug">אין יותר מסלול פלילי בבית משפט. ערעור נכתב נכון = ההזדמנות האמיתית היחידה.</p></div>
+      <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><div class="text-3xl mb-3">🎥</div><div class="font-extrabold text-[18px] mb-1">אכיפה מבוססת AI ומצלמות</div><p class="text-[14px] text-slate-500 leading-snug">מצלמות חכמות בכל מקום, דוחות שנשלחים דיגיטלית. הסיכוי לחטוף דוח רק גדל.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section id="how" class="bg-slate-50">
+  <div class="wrap py-14 md:py-20">
+    <h2 class="text-[26px] md:text-[34px] font-black text-center mb-10" style="color:var(--rp-navy)">איך זה עובד?</h2>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="bg-white rounded-2xl border border-slate-100 p-6 text-center shadow-sm"><div class="text-4xl mb-3">📝</div><div class="font-extrabold text-[18px] mb-1">1. רישום חד-פעמי</div><p class="text-[14px] text-slate-500 leading-snug">מעלים צילום רישיון פעם אחת, וזהו.</p></div>
+      <div class="bg-white rounded-2xl border border-slate-100 p-6 text-center shadow-sm"><div class="text-4xl mb-3">📡</div><div class="font-extrabold text-[18px] mb-1">2. ניטור רציף 24/7</div><p class="text-[14px] text-slate-500 leading-snug">המערכת סורקת את מאגרי הרשויות מסביב לשעון.</p></div>
+      <div class="bg-white rounded-2xl border border-slate-100 p-6 text-center shadow-sm"><div class="text-4xl mb-3">💬</div><div class="font-extrabold text-[18px] mb-1">3. התראה + טיפול</div><p class="text-[14px] text-slate-500 leading-snug">התראה בוואטסאפ ובמייל, ובמסלול VIP המומחים מגישים ערעור בשמך.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOCIAL PROOF ===================== -->
+<section style="background:var(--rp-navy)" class="text-white">
+  <div class="wrap py-10 text-center">
+    <div class="stat-num text-[40px] md:text-[52px] text-amber-300"><span data-count="30000">0</span>+</div>
+    <div class="text-[16px] text-slate-200 mt-1">נהגים כבר מוגנים עם Road Protect</div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section id="plans" class="bg-white">
+  <div class="wrap py-14 md:py-20">
+    <div class="text-center mb-10"><h2 class="text-[28px] md:text-[36px] font-black" style="color:var(--rp-navy)">מחירון</h2><p class="text-slate-500 mt-2">בחר את רמת ההגנה שמתאימה לך</p></div>
+    <div class="grid md:grid-cols-3 gap-5 items-stretch">
+      <div class="rounded-3xl border border-slate-200 p-7 flex flex-col">
+        <div class="font-extrabold text-[20px]">איתור</div><div class="text-slate-500 text-[13px] mb-4">הגנה בסיסית</div>
+        <div class="mb-1"><span class="text-[40px] font-black">₪99</span><span class="text-slate-500">/שנה</span></div><div class="text-[12px] text-slate-400 mb-5">כ-₪8.25 לחודש</div>
+        <ul class="text-[14px] text-slate-600 space-y-2 mb-6 flex-1"><li>✓ רדאר 24/7 בכל הרשויות</li><li>✓ התראות ללא הגבלה</li><li>✓ העלאת דוח דיגיטלית</li><li>✓ תזכורות לתאריך תשלום</li></ul>
+        <a href="#" class="block text-center font-bold rounded-2xl py-3 btn-ghost">בחר איתור</a>
+      </div>
+      <div class="rounded-3xl p-7 flex flex-col text-white relative" style="background:var(--rp-navy)">
+        <div class="absolute -top-3 right-6 bg-amber-400 text-[#0e2540] text-[12px] font-extrabold rounded-full px-3 py-1">הכי משתלם · 31% חיסכון</div>
+        <div class="font-extrabold text-[20px]">VIP</div><div class="text-slate-300 text-[13px] mb-4">הגנה מלאה</div>
+        <div class="mb-1"><span class="text-[40px] font-black">₪489</span><span class="text-slate-300">/שנה</span></div><div class="text-[12px] text-slate-400 mb-5">כ-₪40.75 לחודש</div>
+        <ul class="text-[14px] text-slate-100 space-y-2 mb-6 flex-1"><li>✓ כל מה שיש באיתור</li><li>✓ ערעורים בלתי מוגבלים ע״י המומחים</li><li>✓ ספיגת ריבית פיגורים</li><li>✓ תשלומים מול העיריות</li><li>✓ הפניה לעו״ד לפי הצורך</li></ul>
+        <a href="#" class="btn-amber block text-center font-extrabold rounded-2xl py-3">הפעל הגנה מלאה ←</a>
+      </div>
+      <div class="rounded-3xl border border-slate-200 p-7 flex flex-col">
+        <div class="font-extrabold text-[20px]">ערעור נקודתי</div><div class="text-slate-500 text-[13px] mb-4">דוח אחד</div>
+        <div class="mb-1"><span class="text-[40px] font-black">₪49</span><span class="text-slate-500">חד פעמי</span></div><div class="text-[12px] text-slate-400 mb-5">ללא הגבלת זמן לניצול</div>
+        <ul class="text-[14px] text-slate-600 space-y-2 mb-6 flex-1"><li>✓ טיפול מלא בערעור על דוח אחד</li><li>✓ עדכונים בוואטסאפ</li><li>✓ בלי מנוי, בלי התחייבות</li></ul>
+        <a href="#" class="block text-center font-bold rounded-2xl py-3 btn-ghost">הגש ערעור בודד</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARTNERS + BACKERS ===================== -->
+<section class="bg-slate-50">
+  <div class="wrap py-12 text-center">
+    <div class="text-[12px] font-bold text-slate-400 mb-5">שותפים עסקיים</div>
+    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-slate-400 font-extrabold text-[17px] mb-10">
+      <span>Pango</span><span>Trademobile</span><span>Strauss</span><span>Samelet</span><span>Touch</span><span>Tir</span><span>Leasecom</span>
+    </div>
+    <div class="text-[12px] font-bold text-slate-400 mb-4">בגיבוי</div>
+    <div class="flex items-center justify-center gap-8 text-slate-500 font-extrabold text-[16px]"><span>Badger Holdings</span><span>GetDismissed USA</span></div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer style="background:#0b1d34" class="text-slate-400">
+  <div class="wrap py-10 grid md:grid-cols-3 gap-6 text-[14px]">
+    <div><div class="font-black text-white text-[18px] mb-2">🛡️ Road Protect</div><p>סורקים עבורך קנסות אבודים מול כלל הרשויות. ניטור, התראות וערעורים — אוטומטית.</p></div>
+    <div><div class="font-bold text-white mb-2">צור קשר</div><p>058-7944611</p><p>info@roadprotect.co.il</p></div>
+    <div><div class="font-bold text-white mb-2">חשוב לדעת</div><p>Road Protect אינו משרד עורכי דין. השירות מספק כלי דיגיטלי לניסוח והגשת ערעור — האחריות על הדיוק וההגשה היא של המשתמש.</p></div>
+  </div>
+  <div class="text-center text-[12px] text-slate-600 pb-6">© 2026 Road Protect</div>
+</footer>
+
+<script>
+  function animateCount(el){const target=+el.dataset.count,dur=1100,t0=performance.now();function tick(now){const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e).toLocaleString('en-US');if(p<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
+  const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');en.target.querySelectorAll('[data-count]').forEach(n=>{if(!n.dataset.done){n.dataset.done=1;animateCount(n);}});io.unobserve(en.target);}});},{threshold:.2});
+  document.querySelectorAll('.reveal,[data-count]').forEach(el=>io.observe(el.closest('.reveal')||el));
+</script>
+</body>
+</html>

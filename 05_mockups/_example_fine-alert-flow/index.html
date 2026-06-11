@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Protect — Fine Alert Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --rp-navy: #0e2540;
+    --rp-navy-2: #1a3a5c;
+    --rp-blue: #2563eb;
+    --rp-red: #dc2626;
+    --rp-amber: #ea580c;
+    --rp-green: #10b981;
+    --rp-bg: #f8fafc;
+    --wa-bg: #e5ddd5;
+    --wa-bubble-in: #ffffff;
+    --wa-green: #25d366;
+  }
+  body { font-family: 'Rubik', system-ui, sans-serif; background: var(--rp-bg); }
+  .nav-shadow { box-shadow: 0 1px 3px rgba(14,37,64,.08); }
+  .card-shadow { box-shadow: 0 4px 24px -8px rgba(14,37,64,.12); }
+  .whatsapp-bg {
+    background-color: #e5ddd5;
+    background-image:
+      radial-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px;
+    background-position: 0 0, 12px 12px;
+  }
+  .bubble-tail-in::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -7px;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 0 10px 10px;
+    border-color: transparent transparent transparent #ffffff;
+  }
+  .pulse-dot { animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: .5; }
+  }
+  .iphone-frame {
+    border-radius: 44px;
+    border: 10px solid #1a1a1a;
+    background: #1a1a1a;
+    box-shadow: 0 20px 60px -10px rgba(0,0,0,.35);
+  }
+  .iphone-notch {
+    width: 120px; height: 26px;
+    background: #1a1a1a;
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto;
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    z-index: 50;
+  }
+</style>
+</head>
+<body class="min-h-screen p-8">
+
+<div class="max-w-7xl mx-auto">
+
+  <!-- Title bar (mockup label, not part of product) -->
+  <header class="mb-10">
+    <div class="text-xs tracking-widest text-slate-500 uppercase mb-2">Mockup · המוקאפ</div>
+    <h1 class="text-3xl font-bold text-slate-900">איתור דוח חדש — חוויית הקצה לקצה</h1>
+    <p class="text-slate-600 mt-2 max-w-3xl">החל מההתראה בוואטסאפ ועד מסך פרטי הדוח ב-Road Protect. זה ה-moment of truth של המוצר — שני המסכים שמחליטים אם המשתמש מקבל ערך או רק עוד הודעה.</p>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+    <!-- LEFT: WhatsApp alert screen -->
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></div>
+        <h2 class="text-sm font-semibold text-slate-700 tracking-wide">1. התראה ב-WhatsApp · מיד עם איתור הדוח</h2>
+      </div>
+
+      <div class="relative mx-auto" style="max-width: 380px;">
+        <div class="iphone-frame relative overflow-hidden" style="height: 720px;">
+          <div class="iphone-notch"></div>
+
+          <!-- WhatsApp chat -->
+          <div class="bg-white h-full overflow-hidden flex flex-col" style="border-radius: 36px;">
+
+            <!-- WhatsApp header -->
+            <div class="pt-7 pb-2 px-4 text-white" style="background: linear-gradient(180deg, #075e54 0%, #128c7e 100%);">
+              <div class="flex items-center gap-3 pt-2">
+                <div class="text-white text-xl">‹</div>
+                <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center font-bold" style="color: var(--rp-navy);">RP</div>
+                <div class="flex-1">
+                  <div class="font-semibold text-sm">Road Protect 🛡️</div>
+                  <div class="text-xs opacity-80">מקוון · עוזר דיגיטלי</div>
+                </div>
+                <div class="text-white opacity-80">⋮</div>
+              </div>
+            </div>
+
+            <!-- Chat area -->
+            <div class="flex-1 whatsapp-bg p-3 overflow-y-auto space-y-3">
+
+              <div class="text-center">
+                <span class="inline-block text-xs px-3 py-1 rounded-full" style="background: rgba(225,245,254,.92); color: #455a64;">היום</span>
+              </div>
+
+              <!-- Incoming bubble: alert -->
+              <div class="flex">
+                <div class="relative bg-white rounded-lg rounded-tr-none px-3 py-2 max-w-[85%] shadow-sm bubble-tail-in">
+                  <div class="text-[15px] leading-relaxed text-slate-800">
+                    <div class="font-semibold mb-1">היי יוסי, איתרנו עבורך דוח חדש ⚠️</div>
+                    <div>איזה באסה. שלחנו את הפרטים גם למייל, וכאן בקיצור:</div>
+
+                    <div class="my-2 p-2.5 rounded-md text-[13px]" style="background: #fef2f2; border-right: 3px solid var(--rp-red);">
+                      <div class="font-semibold" style="color: var(--rp-red);">דוח מהירות · עיריית תל אביב</div>
+                      <div class="text-slate-700 mt-0.5">סכום: <strong>₪750</strong></div>
+                      <div class="text-slate-700">תאריך: 24.05.2026, 14:32</div>
+                      <div class="text-slate-700">צמוד תשלום: 24.08.2026</div>
+                    </div>
+
+                    <div>רגע לפני שאתה רץ לשלם — עצור. אם הדוח לא יטופל בזמן, יתווסף 50% ריבית פיגורים ויצטברו לך 4 נקודות ברישיון.</div>
+                    <div class="mt-2">המומחים שלנו ב-VIP נכנסים לתמונה עכשיו, מנסחים את הערעור בשמך ונלחמים כדי שלא תשלם שקל מיותר.</div>
+                    <div class="mt-2 font-medium">רוצה שאתחיל לטפל בזה? פשוט תכתוב לי כאן "אשמח לפרטים" 🛡️</div>
+                  </div>
+                  <div class="text-[10px] text-slate-400 text-left mt-1">14:34 ✓✓</div>
+                </div>
+              </div>
+
+              <!-- User response -->
+              <div class="flex justify-end">
+                <div class="rounded-lg rounded-tl-none px-3 py-2 max-w-[80%] shadow-sm" style="background: #d9fdd3;">
+                  <div class="text-[15px] text-slate-800">אשמח לפרטים</div>
+                  <div class="text-[10px] text-slate-500 text-left mt-0.5">14:36 ✓✓</div>
+                </div>
+              </div>
+
+              <!-- Follow-up -->
+              <div class="flex">
+                <div class="relative bg-white rounded-lg rounded-tr-none px-3 py-2 max-w-[85%] shadow-sm bubble-tail-in">
+                  <div class="text-[15px] leading-relaxed text-slate-800">
+                    מעולה! פתחתי לך מסך עם כל הפרטים והדרך הכי קצרה לערער. כדי לסיים את התהליך לחץ כאן 👇
+                  </div>
+                  <a href="#" class="block mt-2 p-2.5 rounded-md text-center text-white text-sm font-medium" style="background: var(--rp-navy);">
+                    פתח ב-Road Protect →
+                  </a>
+                  <div class="text-[10px] text-slate-400 text-left mt-1">14:36 ✓✓</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Input bar -->
+            <div class="bg-white px-3 py-2 flex items-center gap-2 border-t border-slate-100">
+              <div class="flex-1 bg-slate-100 rounded-full px-4 py-2 text-sm text-slate-400">הקלד הודעה</div>
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-white" style="background: var(--wa-green);">🎤</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes under the WhatsApp mockup -->
+      <div class="mt-6 p-4 bg-white rounded-lg card-shadow text-sm text-slate-700">
+        <div class="font-semibold mb-2 text-slate-900">תפקיד המסך הזה</div>
+        <ul class="space-y-1 list-disc pr-5">
+          <li>הגעה מיידית (תוך דקות מרישום הדוח) — לפני שהמכתב מהדואר יוצא.</li>
+          <li>אמפתיה ראשונה ("איזה באסה"), ואז המידע הטכני.</li>
+          <li>פירוט הקנס כ-rich card בצבע אזהרה (לא רק טקסט).</li>
+          <li>CTA יחיד וברור: "אשמח לפרטים" — מילת מפתח שמפעילה את הזרימה הבאה.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT: In-app fine details screen -->
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-2 h-2 rounded-full" style="background: var(--rp-blue);"></div>
+        <h2 class="text-sm font-semibold text-slate-700 tracking-wide">2. מסך פרטי הדוח · Road Protect App</h2>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+
+        <!-- App header -->
+        <div class="px-6 py-4 flex items-center justify-between" style="background: var(--rp-navy); color: white;">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">‹</span>
+            <span class="text-sm">חזרה לרשימת הדוחות</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-sm opacity-80">יוסי כהן</span>
+            <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm font-semibold">יכ</div>
+          </div>
+        </div>
+
+        <!-- Status banner -->
+        <div class="px-6 py-3 flex items-center justify-between" style="background: #fef2f2; border-bottom: 1px solid #fecaca;">
+          <div class="flex items-center gap-2">
+            <div class="w-2.5 h-2.5 rounded-full pulse-dot" style="background: var(--rp-red);"></div>
+            <span class="text-sm font-medium" style="color: var(--rp-red);">דוח פתוח · דורש טיפול</span>
+          </div>
+          <div class="text-xs text-slate-500">נמצא לפני 4 דקות</div>
+        </div>
+
+        <!-- Main info -->
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <div class="text-xs text-slate-500 mb-1">סוג עבירה</div>
+              <div class="text-2xl font-bold text-slate-900">חריגה ממהירות</div>
+              <div class="text-sm text-slate-600 mt-1">דרך נמיר, תל אביב · מצלמת אכיפה #4421</div>
+            </div>
+            <div class="text-left">
+              <div class="text-xs text-slate-500 mb-1">סכום</div>
+              <div class="text-3xl font-bold" style="color: var(--rp-navy);">₪750</div>
+              <div class="text-xs text-slate-500 mt-1">+ 4 נקודות</div>
+            </div>
+          </div>
+
+          <!-- Details grid -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="p-3 rounded-lg" style="background: #f1f5f9;">
+              <div class="text-xs text-slate-500">תאריך אירוע</div>
+              <div class="text-sm font-medium text-slate-900 mt-0.5">24.05.2026</div>
+              <div class="text-xs text-slate-500">14:32</div>
+            </div>
+            <div class="p-3 rounded-lg" style="background: #f1f5f9;">
+              <div class="text-xs text-slate-500">רשות</div>
+              <div class="text-sm font-medium text-slate-900 mt-0.5">עיריית תל אביב-יפו</div>
+            </div>
+            <div class="p-3 rounded-lg" style="background: #f1f5f9;">
+              <div class="text-xs text-slate-500">מספר דוח</div>
+              <div class="text-sm font-medium text-slate-900 mt-0.5 font-mono">TA-2026-094412</div>
+            </div>
+            <div class="p-3 rounded-lg" style="background: #fef9c3;">
+              <div class="text-xs" style="color: #92400e;">מועד אחרון לתשלום</div>
+              <div class="text-sm font-medium mt-0.5" style="color: #92400e;">24.08.2026</div>
+              <div class="text-xs" style="color: #92400e;">בעוד 90 ימים</div>
+            </div>
+          </div>
+
+          <!-- Cost-of-inaction box -->
+          <div class="p-4 rounded-lg mb-6" style="background: #fef2f2; border: 1px solid #fecaca;">
+            <div class="text-sm font-semibold mb-2" style="color: var(--rp-red);">העלות אם לא נטפל בזמן</div>
+            <div class="space-y-1.5 text-sm text-slate-700">
+              <div class="flex justify-between"><span>הקנס המקורי</span><span class="font-medium">₪750</span></div>
+              <div class="flex justify-between"><span>ריבית פיגורים (50%)</span><span class="font-medium" style="color: var(--rp-red);">+₪375</span></div>
+              <div class="flex justify-between"><span>נקודות ברישיון</span><span class="font-medium">+4</span></div>
+              <div class="border-t border-red-200 my-2"></div>
+              <div class="flex justify-between font-semibold text-slate-900"><span>סה"כ חשיפה</span><span>₪1,125 + 4 נק'</span></div>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="space-y-3">
+            <button class="w-full py-3.5 rounded-lg text-white font-semibold text-base" style="background: var(--rp-navy);">
+              ערער על הדוח עם Road Protect →
+            </button>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="py-2.5 rounded-lg border-2 text-sm font-medium" style="border-color: #e2e8f0; color: var(--rp-navy);">
+                שלם דרך האפליקציה
+              </button>
+              <button class="py-2.5 rounded-lg border-2 text-sm font-medium" style="border-color: #e2e8f0; color: var(--rp-navy);">
+                שמור לטיפול אחר כך
+              </button>
+            </div>
+          </div>
+
+          <!-- VIP upsell strip -->
+          <div class="mt-6 p-4 rounded-lg flex items-center gap-4" style="background: linear-gradient(135deg, #0e2540 0%, #1a3a5c 100%); color: white;">
+            <div class="text-2xl">🛡️</div>
+            <div class="flex-1">
+              <div class="text-sm font-semibold">לא חבר VIP? המומחים שלנו יכולים לערער בשמך עכשיו.</div>
+              <div class="text-xs opacity-80 mt-0.5">ערעורים בלתי מוגבלים · ספיגת ריבית פיגורים · ₪489/שנה</div>
+            </div>
+            <button class="text-sm font-medium px-3 py-1.5 rounded-md whitespace-nowrap" style="background: white; color: var(--rp-navy);">
+              שדרג
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Notes under in-app -->
+      <div class="mt-6 p-4 bg-white rounded-lg card-shadow text-sm text-slate-700">
+        <div class="font-semibold mb-2 text-slate-900">תפקיד המסך הזה</div>
+        <ul class="space-y-1 list-disc pr-5">
+          <li>סטטוס פתוח (אדום פועם) — המשתמש לא יכול להתבלבל מה לעשות עכשיו.</li>
+          <li>הטבלה של "העלות אם לא נטפל" מצדיקה את הערעור מתמטית, לא רגשית.</li>
+          <li>היררכיה ברורה ב-CTA: ערעור = primary, תשלום ושמור = secondary.</li>
+          <li>פס שדרוג VIP בתחתית למשתמשים שעדיין במסלול האיתור — קונטקסט-aware.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-16 pt-8 border-t border-slate-200 text-center text-xs text-slate-500">
+    <div>מוקאפ פנימי · Road Protect PM Workspace</div>
+    <div class="mt-1">לא מהווה שירות משפטי · Road Protect מספקת סביבה דיגיטלית לניסוח עצמי של ערעורים</div>
+  </footer>
+
+</div>
+
+</body>
+</html>

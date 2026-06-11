@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Protect — Benefits App Listing Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    /* Road Protect brand */
+    --rp-navy: #0e2540;
+    --rp-navy-2: #1a3a5c;
+    --rp-blue: #2563eb;
+    --rp-accent: #f59e0b;
+
+    /* Benefits app shell — extracted from the screenshot */
+    --bf-pink: #f9286b;
+    --bf-pink-dark: #d61f5a;
+    --bf-burgundy: #4a1f2c;
+    --bf-dark: #1a1a1a;
+    --bf-dark-2: #0e0e0e;
+    --bf-text: #ffffff;
+    --bf-text-dim: #c9c9c9;
+  }
+  body { font-family: 'Rubik', system-ui, sans-serif; background: #f1f3f5; }
+  .mono { font-family: 'SF Mono', Menlo, monospace; }
+  .card-shadow { box-shadow: 0 12px 40px -12px rgba(0,0,0,.25); }
+  .logo-card-shadow { box-shadow: 0 8px 32px -8px rgba(0,0,0,.18); }
+
+  /* iPhone frame */
+  .iphone-outer {
+    width: 390px;
+    border-radius: 48px;
+    border: 12px solid #0d0d0d;
+    background: #0d0d0d;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.45);
+    overflow: hidden;
+    position: relative;
+  }
+  .iphone-notch {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 130px; height: 30px;
+    background: #0d0d0d;
+    border-radius: 0 0 18px 18px;
+    z-index: 50;
+  }
+  .iphone-screen {
+    border-radius: 36px;
+    overflow: hidden;
+    background: #fff;
+    height: 800px;
+  }
+
+  /* Status bar */
+  .status-bar {
+    height: 44px;
+    padding: 14px 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .battery {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .battery-shell {
+    width: 26px; height: 13px;
+    border: 1.5px solid white;
+    border-radius: 3px;
+    padding: 1.5px;
+    display: inline-block;
+    position: relative;
+  }
+  .battery-shell::after {
+    content: '';
+    position: absolute;
+    right: -3px; top: 3px;
+    width: 2px; height: 5px;
+    background: white;
+    border-radius: 0 1px 1px 0;
+  }
+  .battery-fill {
+    height: 100%;
+    background: #fde047;
+    border-radius: 1px;
+  }
+
+  /* Logo lockup */
+  .rp-logo {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .rp-shield {
+    width: 56px; height: 64px;
+    background: var(--rp-navy);
+    clip-path: path('M28 2 L54 12 L54 32 Q54 50 28 62 Q2 50 2 32 L2 12 Z');
+    position: relative;
+  }
+  .rp-shield-inner {
+    position: absolute;
+    inset: 4px;
+    background: linear-gradient(135deg, #1a3a5c 0%, #0e2540 100%);
+    clip-path: path('M24 0 L46 8 L46 26 Q46 42 24 52 Q2 42 2 26 L2 8 Z');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+  }
+
+  /* Decorative pattern for the logo card backdrop */
+  .pattern-bg {
+    background-color: white;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(14,37,64,.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(245,158,11,.05) 0%, transparent 50%);
+  }
+</style>
+</head>
+<body class="min-h-screen py-10 px-6">
+
+<div class="max-w-7xl mx-auto">
+
+  <!-- Header -->
+  <header class="mb-10">
+    <div class="text-xs tracking-widest text-slate-500 uppercase mb-2">Mockup · Benefits App Listing</div>
+    <h1 class="text-3xl font-bold text-slate-900">Road Protect בתוך אפליקציית Benefits</h1>
+    <p class="text-slate-600 mt-2 max-w-3xl">סימולציה של מסך המוצר עבור הצוות של Benefits. השתמשנו ב-shell המקורי שלהם (פסים ורודים, רקע כהה, badge הנחה) והכנסנו פנימה את הזהות של Road Protect: לוגו מגן בצבעי הנייווי, פסקת הסבר שעומדת בקו המשפטי, ו-CTA יחיד.</p>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-12">
+
+    <!-- LEFT: The iPhone mockup -->
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-2 h-2 rounded-full" style="background: var(--bf-pink);"></div>
+        <h2 class="text-sm font-semibold text-slate-700 tracking-wide">המסך כפי שייראה למשתמש Benefits</h2>
+      </div>
+
+      <div class="iphone-outer">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+
+          <!-- BENEFITS APP HEADER (pink) -->
+          <div style="background: var(--bf-pink);">
+
+            <!-- Status bar -->
+            <div class="status-bar">
+              <div>15:37</div>
+              <div class="flex items-center gap-2">
+                <!-- Signal -->
+                <svg width="18" height="12" viewBox="0 0 18 12" fill="white">
+                  <rect x="0" y="9" width="3" height="3" rx="0.5"/>
+                  <rect x="5" y="6" width="3" height="6" rx="0.5"/>
+                  <rect x="10" y="3" width="3" height="9" rx="0.5" opacity="0.5"/>
+                  <rect x="15" y="0" width="3" height="12" rx="0.5" opacity="0.3"/>
+                </svg>
+                <!-- Wifi -->
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="white">
+                  <path d="M8 2 C4 2 1 4 0 6 L2 8 C3.5 6.5 5.5 5.5 8 5.5 C10.5 5.5 12.5 6.5 14 8 L16 6 C15 4 12 2 8 2 Z"/>
+                  <path d="M8 6 C6 6 4 7 3 8.5 L4.5 10 C5.5 9 6.5 8.5 8 8.5 C9.5 8.5 10.5 9 11.5 10 L13 8.5 C12 7 10 6 8 6 Z"/>
+                  <circle cx="8" cy="11" r="1.3"/>
+                </svg>
+                <!-- Battery -->
+                <div class="battery-shell">
+                  <div class="battery-fill" style="width: 42%;"></div>
+                </div>
+                <div class="text-[10px] font-bold absolute" style="margin-right: -22px; color: var(--bf-pink); padding: 0 4px;">42</div>
+              </div>
+            </div>
+
+            <!-- Nav bar -->
+            <div class="flex items-center justify-between px-5 py-3 text-white">
+              <div class="flex items-center gap-1 text-base font-medium">
+                <span>חזרה</span>
+                <span class="text-xl leading-none">›</span>
+              </div>
+              <div class="text-base font-semibold">מוצר</div>
+              <div class="w-12"></div>
+            </div>
+
+          </div>
+
+          <!-- HERO: logo card on light bg -->
+          <div class="pattern-bg pb-8 pt-6 relative">
+
+            <!-- Discount badge -->
+            <div class="absolute top-5 right-5 px-4 py-2 rounded-md text-white text-sm font-bold" style="background: var(--bf-burgundy);">
+              20% הנחה
+            </div>
+
+            <!-- Heart icon -->
+            <div class="absolute top-5 left-5 w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(0,0,0,.65);">
+              <svg width="20" height="18" viewBox="0 0 20 18" fill="none" stroke="white" stroke-width="1.8">
+                <path d="M10 16 L3 9.5 C1 7.5 1 4.5 3 2.5 C5 0.5 8 0.5 10 2.5 C12 0.5 15 0.5 17 2.5 C19 4.5 19 7.5 17 9.5 Z"/>
+              </svg>
+            </div>
+
+            <!-- Logo card -->
+            <div class="mx-6 mt-12 mb-4 bg-white rounded-2xl py-14 px-6 logo-card-shadow flex items-center justify-center">
+              <img src="road-protect-logo.png" alt="Road Protect" style="max-width: 80%; height: auto;">
+            </div>
+          </div>
+
+          <!-- DARK SECTION: product info -->
+          <div class="px-6 pt-7 pb-8" style="background: var(--bf-dark); color: var(--bf-text);">
+
+            <h2 class="text-2xl font-bold mb-4" style="color: var(--bf-pink);">
+              שובר ל-Road Protect VIP
+            </h2>
+
+            <p class="text-[14px] leading-[1.8]" style="color: var(--bf-text-dim);">
+              <span class="font-semibold" style="color: white;">Road Protect</span> היא הרדאר הדיגיטלי הראשון בישראל לדוחות תנועה וחנייה: סורקת 24/7 את רוב הרשויות בישראל, מאתרת דוחות שנרשמו על שמך עוד לפני שהמכתב מגיע (אם בכלל), ומתריעה בוואטסאפ ובמייל ברגע שזה קורה. במסלול ה-VIP <span class="font-semibold" style="color: white;">עורך דין ה-AI</span> בשילוב עם צוות המומחים, מנסחים עבורך את הערעורים ללא הגבלה לאורך כל השנה, ספיגת ריבית פיגורים של 50%, סיוע בתשלום מול הרשויות והפניה לעו"ד במקרים מיוחדים. אנחנו כאן כדי למנוע כפל קנסות, עיקולים מפתיעים בחשבון הבנק ונלחמים עבורכם מול הבריונות הבירוקרטית. ממוצע ההוצאה של נהג ישראלי על דוחות הוא ₪2,150 בשלוש שנים. <span style="color: white;">לא רוצים מנוי שנתי?</span> זמינה גם אפשרות <span class="font-semibold" style="color: white;">ערעור חד-פעמי ב-₪49</span> — טיפול מלא בדוח בודד, כולל ניסוח ועדכונים.
+            </p>
+
+            <div class="mt-5 pt-5 border-t border-white/10">
+              <h3 class="text-[15px] font-semibold mb-2" style="color: white;">אופן מימוש:</h3>
+              <p class="text-[13px] leading-relaxed" style="color: var(--bf-text-dim);">
+                למימוש השובר יש להציג את הקוד בעמוד ההרשמה באתר Road Protect ולקבל את ההנחה אוטומטית בעת הרכישה השנתית.
+              </p>
+
+              <h3 class="text-[15px] font-semibold mt-4 mb-2" style="color: white;">הגבלות:</h3>
+              <ul class="text-[13px] leading-relaxed space-y-1" style="color: var(--bf-text-dim);">
+                <li>· ההנחה תקפה למנוי שנתי חדש בלבד (לא לחידוש קיים).</li>
+                <li>· ניתן לממש שובר אחד למשתמש.</li>
+                <li>· ההטבה אינה ניתנת להמרה למזומן ואינה כפולה במבצעים.</li>
+                <li>· השירות אינו מהווה ייעוץ משפטי ואינו ניתן במסגרת משרד עורכי דין.</li>
+                <li>· השימוש כפוף לתנאי השימוש באתר Road Protect.</li>
+              </ul>
+
+              <div class="mt-5 text-[13px]" style="color: var(--bf-text-dim);">
+                <span class="font-medium" style="color: white;">מפיק השובר:</span>
+                <a href="#" class="underline" style="color: var(--bf-pink);">https://roadprotect.co.il/benefits</a>
+                <span> — רוד פרוטקט בע"מ. ט.ל.ח</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA BAR -->
+          <div class="px-4 py-3 border-t" style="background: var(--bf-dark-2); border-color: rgba(255,255,255,.08);">
+            <button class="w-full py-3.5 rounded-md text-white font-bold text-[15px] flex items-center justify-center gap-2" style="background: var(--bf-pink);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+                <rect x="3" y="6" width="18" height="14" rx="2"/>
+                <path d="M3 10 H21"/>
+              </svg>
+              <span>אישור עסקה · רכישת השובר</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Annotations & handoff notes -->
+    <div class="space-y-6">
+
+      <div class="bg-white rounded-xl p-5 card-shadow">
+        <h3 class="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          איך בנוי המסך — לסקירה מהירה
+        </h3>
+        <ol class="text-sm text-slate-700 space-y-2 list-decimal pr-5">
+          <li><strong>פס עליון ורוד</strong> — זהות Benefits נשארת. סטטוס בר + ניווט "חזרה / מוצר".</li>
+          <li><strong>Badge הנחה</strong> — 20% כברירת מחדל. ניתן לשינוי לפי המו"מ מולם (10/15/25 ).</li>
+          <li><strong>כרטיס לוגו</strong> — לבן עם מגן Road Protect בצבע הנייווי (#0e2540) והווי משפטי (FINES · RADAR · APPEALS) כתת-כותרת.</li>
+          <li><strong>סקציה כהה</strong> — כותרת בוורוד של Benefits, ופסקה אחת שמסבירה את השירות עם הוקים מספריים (50% ריבית, ₪2,150 ממוצע).</li>
+          <li><strong>תנאי מימוש</strong> — כולל את הקו המשפטי הסטנדרטי (לא ייעוץ משפטי, לא משרד עו"ד).</li>
+          <li><strong>CTA תחתון</strong> — "אישור עסקה · רכישת השובר" — תואם לשפה שלהם בצילום המסך.</li>
+        </ol>
+      </div>
+
+      <div class="bg-white rounded-xl p-5 card-shadow">
+        <h3 class="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+          החלטות שעדיין פתוחות
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-2.5">
+          <li><strong>אחוז ההנחה</strong> — 20% נראה הגיוני. 25% יהיה יותר מושך אבל פוגע ב-margin. מה סוכם איתם?</li>
+          <li><strong>איזה מסלול בולט</strong> — בחרתי VIP (המוצר עם ה-margin הגבוה). אפשר לפצל לשני שוברים נפרדים (Detection ₪99 · VIP ₪489) אם הם מאפשרים זאת.</li>
+          <li><strong>קוד שובר</strong> — הם בדרך כלל מייצרים. צריך לוודא שהוא מגיע לדומיין שלנו עם UTM/קוד הנחה שמופעל אוטומטית.</li>
+          <li><strong>הסעיף "מפיק השובר"</strong> — האם השם הרשום הוא "רוד פרוטקט בע"מ" או שם אחר? לבדוק לפני שליחה.</li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-5 text-white">
+        <h3 class="text-sm font-semibold mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>
+          מה לשלוח ל-Benefits
+        </h3>
+        <p class="text-sm text-slate-300 mb-3">
+          המוקאפ הזה הוא להמחשה ויזואלית. הנכסים שהם צריכים בפועל (לוגו, קופי, תנאים) נמצאים בקובץ:
+        </p>
+        <div class="bg-black/30 rounded-md p-3 mono text-xs text-pink-200">
+          assets-for-benefits.md
+        </div>
+        <p class="text-xs text-slate-400 mt-3">
+          בנוסף, צריך לספק להם את קובץ הלוגו ב-PNG/SVG ברזולוציה גבוהה (יש פלייסהולדר SVG בתיקייה).
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-16 pt-8 border-t border-slate-200 text-center text-xs text-slate-500">
+    <div>מוקאפ פנימי · Road Protect PM Workspace · עבור Benefits App</div>
+    <div class="mt-1">לא מהווה שירות משפטי · Road Protect מספקת סביבה דיגיטלית לניסוח עצמי של ערעורים</div>
+  </footer>
+
+</div>
+
+</body>
+</html>

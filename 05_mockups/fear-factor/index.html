@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Protect — סקשן "פקטור הפחד" (מוקאפ)</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --rp-navy:#0e2540; --rp-navy-2:#13304f; --rp-blue:#2563eb; --rp-accent:#f59e0b;
+  }
+  *{font-family:'Rubik',system-ui,sans-serif;}
+  body{background:#eef1f4;margin:0;}
+  /* phone frame for the mockup preview */
+  .frame{max-width:430px;margin:0 auto;background:#fff;box-shadow:0 30px 80px -24px rgba(0,0,0,.4);}
+  .fear{background:
+      radial-gradient(120% 80% at 50% -10%, rgba(245,158,11,.10), transparent 60%),
+      linear-gradient(180deg,#0b1d34 0%, var(--rp-navy) 45%, var(--rp-navy-2) 100%);
+  }
+  .grid-lines{
+    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  .stat-num{font-weight:900;line-height:.92;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .reveal{opacity:0;transform:translateY(22px);transition:all .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .pulse-dot{animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.55)}70%{box-shadow:0 0 0 12px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+  .cta-primary{background:var(--rp-accent);box-shadow:0 14px 30px -10px rgba(245,158,11,.6);}
+  .cta-primary:active{transform:translateY(1px);}
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- ====== הקשר: סוף ה-HERO (placeholder) ====== -->
+  <div class="bg-white px-6 pt-7 pb-5 text-center border-b border-slate-100">
+    <div class="text-[11px] font-bold tracking-widest text-slate-400">▲ סוף ה-HERO (להמחשה בלבד)</div>
+  </div>
+
+  <!-- ============ A · כותרת הלם ============ -->
+  <section class="fear grid-lines text-white px-6 pt-12 pb-10">
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 text-[12px] font-bold text-amber-300 mb-4">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500 pulse-dot inline-block"></span>
+        האח הגדול כבר על הכביש
+      </div>
+      <h2 class="text-[30px] font-black leading-[1.12] mb-3">
+        מ-2026, האכיפה כבר<br>לא צריכה אותך<br>כדי לתפוס אותך.
+      </h2>
+      <p class="text-[15px] leading-relaxed text-slate-300">
+        מצלמות בכל פינה, אכיפה דיגיטלית מרחוק, ודוחות שנשלחים אליך הביתה —
+        בלי ששוטר אחד עצר אותך. הבעיה האמיתית? הדוחות שלא תדע עליהם, עד שיהיה מאוחר.
+      </p>
+    </div>
+
+    <!-- ============ B · 4 כרטיסי נתון ============ -->
+    <div class="mt-8 space-y-3">
+
+      <div class="reveal rounded-2xl bg-white/[.06] border border-white/10 p-5 flex items-start gap-4">
+        <svg class="w-8 h-8 shrink-0 text-amber-300 mt-1" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 8.5A2.5 2.5 0 014.5 6h2l1.2-1.6a1 1 0 01.8-.4h7a1 1 0 01.8.4L17.5 6h2A2.5 2.5 0 0122 8.5v8A2.5 2.5 0 0119.5 19h-15A2.5 2.5 0 012 16.5v-8z"/><circle cx="12" cy="12" r="3.2"/></svg>
+        <div>
+          <div class="stat-num text-[44px] text-white" data-count="500" data-suffix="">0</div>
+          <div class="text-[15px] font-bold text-amber-300 -mt-1">מצלמות חדשות בכבישים</div>
+          <p class="text-[13px] text-slate-300 mt-1 leading-snug">מצלמות "מהירות ממוצעת" ב-250 מקטעים. להאט רגע לפני המצלמה כבר לא עוזר — מודדים אותך לאורך כל הדרך.</p>
+          <div class="text-[10px] text-slate-500 mt-2">מקור: ynet / כלכליסט, 2026</div>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl bg-white/[.06] border border-white/10 p-5 flex items-start gap-4">
+        <svg class="w-8 h-8 shrink-0 text-amber-300 mt-1" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16M8 4v16"/></svg>
+        <div>
+          <div class="stat-num text-[44px] text-white" data-count="80" data-suffix="%">0</div>
+          <div class="text-[15px] font-bold text-amber-300 -mt-1">מהדוחות — דיגיטלית, בלי שוטר</div>
+          <p class="text-[13px] text-slate-300 mt-1 leading-snug">ככה זה כבר עובד בעולם, וישראל בדיוק שם. הדוח פשוט נוחת אצלך — מתי שלא תצפה.</p>
+          <div class="text-[10px] text-slate-500 mt-2">מקור: רשות הבטיחות בדרכים</div>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl bg-white/[.06] border border-white/10 p-5 flex items-start gap-4">
+        <svg class="w-8 h-8 shrink-0 text-amber-300 mt-1" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 12l4 2M12 3v3M3 12h3M12 21v-3M21 12h-3"/></svg>
+        <div>
+          <div class="stat-num text-[44px] text-white"><span data-count="6600" data-suffix="">0</span><span class="text-[28px]">+</span></div>
+          <div class="text-[15px] font-bold text-amber-300 -mt-1">מצלמות מחוברות בזמן אמת</div>
+          <p class="text-[13px] text-slate-300 mt-1 leading-snug">רשת שמזהה את לוחית הרישוי שלך בזמן אמת. הרכב שלך גלוי — כל הזמן.</p>
+          <div class="text-[10px] text-slate-500 mt-2">מקור: law.co.il, 2026</div>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl bg-red-500/10 border border-red-400/30 p-5 flex items-start gap-4">
+        <svg class="w-8 h-8 shrink-0 text-red-400 mt-1" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9l-8 13.8A2 2 0 004 21h16a2 2 0 001.7-3.3l-8-13.8a2 2 0 00-3.4 0z"/></svg>
+        <div>
+          <div class="stat-num text-[44px] text-red-400"><span data-count="50" data-suffix="%">0</span></div>
+          <div class="text-[15px] font-bold text-red-300 -mt-1">ריבית פיגורים על דוח שפספסת</div>
+          <p class="text-[13px] text-slate-300 mt-1 leading-snug">דוח שלא הגיע אליך בזמן לא נעלם — הוא תופח. ריבית פיגורים, כפל קנס, נקודות, ובסוף עיקול.</p>
+          <div class="text-[10px] text-slate-500 mt-2">מקור: נוהל גבייה / משרד התחבורה</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ C · מה זה אומר עליך ============ -->
+    <div class="reveal mt-9 border-r-4 border-amber-400 pr-4">
+      <h3 class="text-[20px] font-extrabold mb-2">עכשיו תחשוב על זה רגע.</h3>
+      <p class="text-[14px] leading-relaxed text-slate-300">
+        כל דוח שלא יגיע אליך בזמן — כי המכתב הלך לאיבוד, כי עברת דירה, כי פשוט לא ידעת —
+        מתחיל מירוץ שקט נגדך: ריבית פיגורים, כפל קנס, נקודות שמצטברות לקראת שלילה.
+        אתה מגלה את זה כשכבר עיקלו לך את חשבון הבנק. ובעידן של מצלמה בכל פינה — כמות הדוחות רק הולכת לגדול.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ D · ההקלה — אנחנו הגב שלך ============ -->
+  <section class="bg-white px-6 pt-10 pb-7">
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-blue-700 mb-3">
+        <span>🛡️</span> כאן אנחנו נכנסים
+      </div>
+      <h3 class="text-[26px] font-black text-slate-900 leading-tight mb-3">
+        בשביל זה בדיוק יש<br><span style="color:var(--rp-blue)">Road Protect</span>.
+      </h3>
+      <p class="text-[15px] leading-relaxed text-slate-600">
+        אנחנו הגב שלך בכבישים. הרדאר שלנו סורק 24/7 את מאגרי המשטרה וכל העיריות, ושולח לך
+        התראה בוואטסאפ ובמייל ברגע שנרשם דוח על שמך — <b>לפני</b> שהוא הופך לכפל קנס.
+        ובמסלול ה-VIP, המומחים שלנו נכנסים לזירה, מנסחים ומגישים את הערעור בשמך, ונלחמים
+        למקסם את סיכויי ביטול הקנס והנקודות.
+      </p>
+      <p class="text-[15px] font-bold text-slate-800 mt-3">
+        אתה לא יכול לעצור את המצלמות. אבל אתה כן יכול לדאוג שאף דוח לא יתפוס אותך לא מוכן.
+      </p>
+    </div>
+
+    <!-- ============ E · CTA ============ -->
+    <div class="reveal mt-7 space-y-3">
+      <a href="#" class="cta-primary block text-center text-[17px] font-extrabold text-[#0e2540] rounded-2xl py-4">
+        הפעל הגנה מלאה ←
+      </a>
+      <a href="#" class="block text-center text-[15px] font-bold text-slate-700 bg-slate-100 rounded-2xl py-3.5">
+        בדוק אם כבר יש דוח על שמך
+      </a>
+      <p class="text-center text-[11px] text-slate-400 pt-1">
+        Road Protect אינו משרד עורכי דין · אנחנו מנסחים ומגישים את הערעור בשמך
+      </p>
+    </div>
+  </section>
+
+  <div class="bg-white px-6 pb-8 text-center">
+    <div class="text-[11px] font-bold tracking-widest text-slate-300 border-t border-slate-100 pt-5">▼ המשך הדף: מסך החבילות</div>
+  </div>
+
+</div>
+
+<script>
+  // count-up on reveal
+  function animateCount(el){
+    const target = +el.dataset.count, suffix = el.dataset.suffix || '';
+    const dur = 1100, t0 = performance.now();
+    function tick(now){
+      const p = Math.min(1,(now-t0)/dur), e = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(target*e).toLocaleString('en-US') + suffix;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        en.target.querySelectorAll('[data-count]').forEach(n=>{ if(!n.dataset.done){n.dataset.done=1;animateCount(n);} });
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.25});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
