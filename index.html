@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Protect — מצטרפים למאבק · רשימת המתנה לביטוח ההגנה המשפטית</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{ --rp-navy:#0e2540; --rp-navy-2:#13304f; --rp-blue:#2563eb; --rp-blue-d:#1d4ed8; --rp-accent:#f59e0b; --rp-red:#dc2626; }
+  *{font-family:'Rubik',system-ui,sans-serif;}
+  body{margin:0;color:#0f172a;background:#fff;}
+  @media (min-width:640px){ html{ zoom:1.1; } }
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;}
+  .btn-blue{background:var(--rp-blue);color:#fff;box-shadow:0 12px 26px -10px rgba(37,99,235,.6);}
+  .btn-blue:active{transform:translateY(1px);}
+  .btn-amber{background:var(--rp-accent);color:#0e2540;box-shadow:0 14px 30px -10px rgba(245,158,11,.55);}
+  .btn-amber:active{transform:translateY(1px);}
+  .btn-ghost{background:#eff4ff;color:var(--rp-blue-d);}
+  .btn-wa{background:#25d366;color:#fff;}
+  /* movement / fight gradient */
+  .fight{background:
+      radial-gradient(120% 80% at 50% -10%, rgba(245,158,11,.12), transparent 60%),
+      linear-gradient(180deg,#0b1d34 0%, var(--rp-navy) 45%, var(--rp-navy-2) 100%);}
+  .grid-lines{background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:34px 34px;}
+  .prod{background:radial-gradient(120% 100% at 85% 0,#1d4ed8 0,var(--rp-navy) 55%);}
+  .stat-num{font-weight:900;line-height:.92;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .reveal{opacity:0;transform:translateY(22px);transition:all .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .pulse-dot{animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.55)}70%{box-shadow:0 0 0 12px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+  .chip{background:#f1f5f9;color:#475569;}
+  .chip-d{background:rgba(255,255,255,.08);color:#cbd5e1;border:1px solid rgba(255,255,255,.12);}
+  .field{width:100%;border:1.5px solid #cbd5e1;border-radius:14px;padding:13px 15px;font-size:15px;color:#0f172a;background:#fff;}
+  .field::placeholder{color:#94a3b8;}
+  .field:focus{outline:none;border-color:var(--rp-blue);box-shadow:0 0 0 4px rgba(37,99,235,.15);}
+  /* progress bar */
+  .pbar{height:18px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;}
+  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,#f59e0b,#fbbf24);width:0;transition:width 1.6s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 20px rgba(245,158,11,.5);}
+  .pbar-lg{height:26px;}
+  .glow{text-shadow:0 0 30px rgba(245,158,11,.35);}
+  /* modal */
+  .modal-bg{position:fixed;inset:0;background:rgba(8,18,34,.72);backdrop-filter:blur(4px);z-index:60;display:none;align-items:center;justify-content:center;padding:18px;}
+  .modal-bg.on{display:flex;}
+  .seal{background:conic-gradient(from 220deg,#f59e0b,#fbbf24,#f59e0b);}
+</style>
+</head>
+<body>
+
+<div style="background:#0b1d34;color:#94a3b8;font-size:11px;text-align:center;padding:6px;letter-spacing:.05em">מוקאפ — דף נחיתה לקמפיין "מצטרפים למאבק" · רשימת המתנה 100K לביטוח ההגנה המשפטית · המספרים הם placeholder עד אישור</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-100">
+  <div class="wrap flex items-center justify-between h-16">
+    <div class="flex items-center gap-2 font-black text-[19px]" style="color:var(--rp-navy)">🛡️ Road&nbsp;Protect</div>
+    <nav class="hidden md:flex items-center gap-6 text-[14px] font-medium text-slate-600">
+      <a href="#cameras">המצלמות החדשות</a><a href="#product">המוצר החדש</a><a href="#power">מי מאחורי המאבק</a><a href="#commit">ההתחייבות</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#join" class="text-[13px] font-extrabold rounded-full px-4 py-2 btn-amber">הצטרפו למאבק</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="fight text-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-lines opacity-70"></div>
+  <div class="wrap relative py-7 md:py-10 grid md:grid-cols-2 gap-7 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-amber-300 mb-5">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500 pulse-dot inline-block"></span> המאבק על הנהג הישראלי · 2026
+      </div>
+      <h1 class="text-[28px] md:text-[42px] font-black leading-[1.07] mb-3 glow">
+        מגנים עליכם מהבריונות הבירוקרטית.<br>
+        <span class="text-amber-300">הצטרפו אלינו למאבק.</span>
+      </h1>
+      <p class="text-[15px] md:text-[17px] text-slate-200 leading-relaxed mb-5 max-w-xl">
+        מצלמות חדשות, אכיפה דיגיטלית מרחוק ודוחות שתופחים לבד — והנהג תמיד לבד מול הרשות.
+        אנחנו בונים את ההגנה הגדולה ביותר שיש: <b class="text-white">כל מה שיש לנו היום + ביטוח הוצאות משפטיות מלא</b>.
+        כדי שזה יקרה — אנחנו צריכים אתכם.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 mb-5">
+        <a href="#join" class="btn-amber text-center text-[17px] font-extrabold rounded-2xl px-8 py-4">שריינו לי מקום במאבק ←</a>
+        <a href="#" class="btn-wa text-center text-[16px] font-bold rounded-2xl px-7 py-4">הצטרפות בוואטסאפ</a>
+      </div>
+      <div class="flex items-center gap-3 text-[13px] text-slate-300">
+        <div class="flex -space-x-2 space-x-reverse">
+          <span class="w-7 h-7 rounded-full bg-amber-400 border-2 border-[#0e2540]"></span>
+          <span class="w-7 h-7 rounded-full bg-blue-400 border-2 border-[#0e2540]"></span>
+          <span class="w-7 h-7 rounded-full bg-emerald-400 border-2 border-[#0e2540]"></span>
+        </div>
+        <span>כבר <b class="text-white" id="hero-count">0</b> נהגים הצטרפו למאבק</span>
+      </div>
+      <div class="mt-4 pt-4 border-t border-white/10">
+        <div class="text-[11px] font-bold text-slate-400 mb-2 tracking-wide">כבר מחוברים אלינו</div>
+        <div class="flex items-center gap-5">
+          <img src="https://trademobile.co.il/_ipx/f_webp,s_178x56/static/logo-white.png" alt="Trademobile" class="h-7 object-contain" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'chip-d rounded-full px-4 py-1.5 text-[14px] font-bold',textContent:'Trademobile'}))">
+          <span class="bg-white rounded-lg px-3 py-1.5 inline-flex items-center"><img src="https://www.howazit.com/wp-content/uploads/2023/07/1-1.png" alt="Pango" class="h-6 object-contain" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'text-[15px] font-black text-[#e6007e]',textContent:'pango'}))"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- hero card: live counter to 100K -->
+    <div class="relative">
+      <div class="bg-white/8 border border-white/15 rounded-3xl p-6 backdrop-blur shadow-2xl">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[12px] font-extrabold text-amber-300">היעד שלנו</span>
+          <span class="text-[12px] text-slate-300">רשימת המתנה פתוחה</span>
+        </div>
+        <div class="flex items-end gap-2 mb-1">
+          <div class="stat-num text-[44px] md:text-[56px] text-white" id="big-count">0</div>
+          <div class="text-[18px] font-bold text-slate-300 mb-2">/ 100,000</div>
+        </div>
+        <div class="pbar pbar-lg mb-3"><div class="pfill" id="pfill-hero"></div></div>
+        <p class="text-[13px] text-slate-300 leading-snug mb-5">
+          כשנגיע ל-100,000 חברים — אנחנו מביאים <b class="text-white">רישיון ביטוח בבעלות, בשווי מאות מיליוני ש״ח</b>, שמגבה את ביטוח ההגנה המשפטית לכל החברים.
+        </p>
+        <a href="#join" class="btn-amber block text-center text-[16px] font-extrabold rounded-2xl px-6 py-3.5">אני בפנים</a>
+        <button onclick="openCommit()" class="w-full text-center text-[13px] font-bold text-amber-300 mt-3 underline underline-offset-4">בקשו לראות את ההתחייבות ←</button>
+        <div class="flex items-center justify-center gap-2 mt-4 pt-4 border-t border-white/10 text-[12px] text-slate-300">
+          <span>תנאי מייסדים לנרשמים מראש נסגרים בעוד</span>
+          <span class="font-black text-amber-300 tabular-nums" id="countdown">--</span>
+        </div>
+      </div>
+      <div class="absolute -top-3 -left-3 bg-amber-400 text-[#0e2540] text-[12px] font-black rounded-full px-3 py-1 shadow-lg">חינם להצטרפות</div>
+    </div>
+  </div>
+
+  <!-- HERO KPI BAND -->
+  <div class="relative border-t border-white/10 bg-black/15">
+    <div class="wrap py-4 md:py-5 grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-4 text-center">
+      <div>
+        <div class="stat-num text-[26px] md:text-[34px] text-amber-300"><span data-count="10000">0</span>+</div>
+        <div class="text-[12px] md:text-[12.5px] font-bold text-slate-300 mt-0.5 leading-snug">רכבים מנוהלים בישראל</div>
+      </div>
+      <div>
+        <div class="stat-num text-[24px] md:text-[30px] text-amber-300 whitespace-nowrap" style="line-height:1.1" dir="ltr"><span data-count="8000000">0</span></div>
+        <div class="text-[12px] md:text-[12.5px] font-bold text-slate-300 mt-0.5 leading-snug">רכבים מנוהלים בעולם</div>
+      </div>
+      <div>
+        <div class="stat-num text-[22px] md:text-[28px] text-amber-300 whitespace-nowrap" style="line-height:1.1" dir="ltr">$<span data-count="300000000">0</span></div>
+        <div class="text-[12px] md:text-[12.5px] font-bold text-slate-300 mt-0.5 leading-snug">נחסכו ללקוחות בהוצאות משפטיות</div>
+      </div>
+      <div>
+        <div class="stat-num text-[26px] md:text-[34px] text-amber-300">עשרות אלפי</div>
+        <div class="text-[12px] md:text-[12.5px] font-bold text-slate-300 mt-0.5 leading-snug">לקוחות פרטיים בעולם הרכב</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<section class="bg-[#0b1d34] border-t border-white/5">
+  <div class="wrap py-6">
+    <div class="text-[12px] font-bold text-slate-400 text-center mb-4">הכוח שמאחורי המאבק — שותפים, מגבים והרבה נהגים</div>
+    <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 opacity-90">
+      <img src="https://trademobile.co.il/_ipx/f_webp,s_178x56/static/logo-white.png" alt="Trademobile" class="h-7 object-contain" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'chip-d rounded-full px-4 py-1.5 text-[13px] font-bold',textContent:'Trademobile'}))">
+      <span class="chip-d rounded-full px-4 py-1.5 text-[13px] font-bold">Pango</span>
+      <span class="chip-d rounded-full px-4 py-1.5 text-[13px] font-bold">שטראוס</span>
+      <span class="chip-d rounded-full px-4 py-1.5 text-[13px] font-bold">סמלת</span>
+      <span class="chip-d rounded-full px-4 py-1.5 text-[13px] font-bold">Touch</span>
+      <span class="chip-d rounded-full px-4 py-1.5 text-[13px] font-bold">תיר השכרת רכב</span>
+      <span class="chip-d rounded-full px-4 py-1.5 text-[13px] font-bold">Leasecom</span>
+      <span class="chip-d rounded-full px-4 py-1.5 text-[13px] font-bold">עיריית אשקלון</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CAMERAS REALITY ===================== -->
+<section id="cameras" class="bg-white">
+  <div class="wrap py-14 md:py-18">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-red-600 mb-4">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-600 pulse-dot inline-block"></span> המציאות החדשה בכבישים · 2026
+      </div>
+      <h2 class="text-[28px] md:text-[40px] font-black leading-[1.12] text-slate-900 mb-3">
+        המצלמות החדשות כבר לא עוצרות אותך — הן פשוט שולחות דוח.
+      </h2>
+      <p class="text-[15px] md:text-[18px] text-slate-600 leading-relaxed">
+        פריסת מצלמות חסרת תקדים ואכיפה אוטומטית מרחוק — וכמות הדוחות מזנקת במאות אחוזים.
+        חלק מהדוחות הללו ניתנים לערעור, אך רק אם יודעים עליהם בזמן. זאת בדיוק הסיבה שצריך גב.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
+      <div class="rounded-2xl border border-slate-200 bg-white p-5 reveal">
+        <div class="stat-num text-[38px] text-red-600"><span data-count="500">0</span>+</div>
+        <div class="text-[14px] font-extrabold text-slate-900 mt-1">מצלמות "מהירות ממוצעת"</div>
+        <p class="text-[12.5px] text-slate-600 mt-1 leading-snug">מודדות אותך לאורך כל המקטע. להאט רגע לפני המצלמה כבר לא עוזר.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-5 reveal">
+        <div class="stat-num text-[38px] text-red-600"><span data-count="80">0</span>%</div>
+        <div class="text-[14px] font-extrabold text-slate-900 mt-1">מהדוחות — בלי שוטר</div>
+        <p class="text-[12.5px] text-slate-600 mt-1 leading-snug">מונפקים דיגיטלית מרחוק. הדוח פשוט נוחת אצלך הביתה.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-5 reveal">
+        <div class="stat-num text-[38px] text-red-600"><span data-count="50">0</span>%</div>
+        <div class="text-[14px] font-extrabold text-slate-900 mt-1">ריבית פיגורים + כפל קנס</div>
+        <p class="text-[12.5px] text-slate-600 mt-1 leading-snug">דוח שפספסת תופח לבד — נקודות, שלילה, ובסוף עיקול בבנק.</p>
+      </div>
+      <div class="rounded-2xl border border-amber-300 bg-amber-50 p-5 reveal">
+        <div class="stat-num text-[38px] text-amber-600">?</div>
+        <div class="text-[14px] font-extrabold text-slate-900 mt-1">חוקיות שנבחנת בערעור</div>
+        <p class="text-[12.5px] text-slate-700 mt-1 leading-snug">תקינות וכיול של חלק מהמצלמות נבחנים בערעורים ובבתי המשפט — לדוח יש פתח לביטול.</p>
+      </div>
+    </div>
+
+    <!-- the legality callout -->
+    <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 md:p-8">
+      <div class="flex flex-col md:flex-row gap-6 items-start">
+        <div class="flex-1">
+          <h3 class="text-[20px] md:text-[24px] font-black text-slate-900 mb-2">המצלמות החדשות — והקפיצה שאף אחד לא סיפר לכם עליה</h3>
+          <ul class="space-y-2 text-[14.5px] text-slate-700 leading-relaxed">
+            <li class="flex gap-2"><span class="text-red-600 font-black">•</span> מצלמות חדשות נכנסות לפעולה — וכמות הדוחות מזנקת במאות אחוזים בתוך שנה.</li>
+            <li class="flex gap-2"><span class="text-red-600 font-black">•</span> תקינותן וכיולן של חלק מהמצלמות נבחנים בערעורים ובבתי המשפט — לדוח יש פתח אמיתי לביטול.</li>
+            <li class="flex gap-2"><span class="text-red-600 font-black">•</span> אבל זה דורש לדעת על הדוח בזמן, ולנסח ערעור נכון — לפני שהוא תופח ל-50% ריבית.</li>
+            <li class="flex gap-2"><span class="text-red-600 font-black">•</span> ואם זה מגיע להליך משפטי — מי משלם על עורך הדין? כאן נכנס <b>Road Protect MAX</b>.</li>
+          </ul>
+        </div>
+        <!-- Ben Gurion enforcement stat -->
+        <div class="md:w-72 shrink-0 rounded-2xl bg-[#0b1d34] text-white p-6 text-center">
+          <div class="text-[12px] font-extrabold text-amber-300 mb-2">רק בנתב״ג · בשנה אחת</div>
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <span class="stat-num text-[26px] text-slate-400">6,000</span>
+            <span class="text-amber-300 text-xl">←</span>
+            <span class="stat-num text-[34px] text-white"><span data-count="51000">0</span></span>
+          </div>
+          <div class="text-[13px] font-bold text-slate-200">דוחות בשנה</div>
+          <div class="mt-3 inline-block bg-red-600 text-white text-[13px] font-black rounded-full px-3 py-1">קפיצה של מאות אחוזים</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE NEW PRODUCT ===================== -->
+<section id="product" class="prod text-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-lines opacity-40"></div>
+  <div class="wrap relative py-14 md:py-18">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="bg-amber-400 text-[#0e2540] text-[12px] font-extrabold rounded-full px-3 py-1">בקרוב · רק לנרשמים מראש</span>
+      <span class="text-amber-300 text-[13px] font-bold">המוצר החדש שלנו</span>
+    </div>
+    <h2 class="text-[30px] md:text-[46px] font-black mb-3 leading-[1.05]">Road Protect <span class="text-amber-300">MAX</span></h2>
+    <p class="text-[17px] md:text-[20px] font-bold text-white mb-3">כל מה שיש לנו היום — פלוס מגן משפטי מלא.</p>
+    <p class="text-[15px] md:text-[18px] text-slate-200 leading-relaxed max-w-2xl mb-8">
+      ההגנה הכי שלמה שבנינו: הרדאר שמאתר כל דוח, צוות המומחים שמנסח את הערעורים — ועכשיו גם
+      <b class="text-white">ביטוח הוצאות משפטיות</b>, שמכסה את עלות עורך הדין אם דוח הופך לתביעה או מגיע לבית משפט.
+    </p>
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-4 text-[15.5px] max-w-3xl">
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span><b>רדאר 24/7</b> — סריקה מול משטרת ישראל ומעל 20 עיריות, התראה בוואטסאפ ובמייל לפני שהמכתב מגיע (אם בכלל).</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span><b>ערעורים ללא הגבלה</b> — צוות המומחים מנסח עבורך לאורך כל השנה, וסופג ריבית פיגורים של 50%.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span><b>תשלומים וטיפול מול הרשויות</b> — אנחנו מנהלים את כל הבירוקרטיה במקומך.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span><b>ביטוח הוצאות משפטיות (חדש)</b> — מתחילים מתיקי תנועה ומתרחבים לתחומים נוספים. אם זה מגיע לבית משפט, עלויות עורך הדין מכוסות.</span></div>
+      <div class="flex gap-3"><span class="text-amber-300 font-black text-lg">✓</span><span><b>גב של חברת ביטוח</b> — עם הגעה ליעד, המוצר יגובה בשותפי ביטוח, כדי שההתחייבות תהיה אמיתית ולא סיסמה.</span></div>
+    </div>
+    <p class="text-[12.5px] text-slate-300/80 mt-8 max-w-2xl leading-snug">
+      * המוצר בפיתוח וטרם זמין לרכישה. Road Protect אינו משרד עורכי דין; כיסוי ההוצאות המשפטיות יינתן באמצעות שותף ביטוח / עו״ד מורשה, ותנאיו הסופיים ייקבעו בהשקה.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== THE COMMITMENT / 100K ===================== -->
+<section id="commit" class="bg-white">
+  <div class="wrap py-14 md:py-18">
+    <div class="rounded-[28px] border border-slate-200 bg-gradient-to-b from-amber-50 to-white p-7 md:p-10 shadow-[0_30px_80px_-40px_rgba(245,158,11,.5)]">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="inline-flex items-center gap-2 text-[12px] font-extrabold text-amber-700 mb-3">ההתחייבות שלנו · בשקיפות מלאה</div>
+        <h2 class="text-[26px] md:text-[38px] font-black text-slate-900 leading-[1.12] mb-3">
+          כשנגיע ל-100,000 חברים — אנחנו מביאים רישיון ביטוח בבעלות,<br class="hidden md:block"> בשווי מאות מיליוני ש״ח.
+        </h2>
+        <p class="text-[15px] md:text-[17px] text-slate-600 leading-relaxed">
+          ככל שנהיה יותר — כך נוכל לרכוש מנוף גדול יותר ולהביא הגנה חזקה יותר לכל אחד מאיתנו.
+          זה לא קמפיין — זה מהלך משותף. כל הצטרפות מקרבת את כולנו ליעד.
+        </p>
+      </div>
+
+      <!-- big progress -->
+      <div class="max-w-3xl mx-auto">
+        <div class="flex items-end justify-between mb-2">
+          <div class="stat-num text-[40px] md:text-[54px] text-slate-900" id="commit-count">0</div>
+          <div class="text-left">
+            <div class="text-[13px] text-slate-500">היעד</div>
+            <div class="text-[22px] font-black text-slate-900">100,000</div>
+          </div>
+        </div>
+        <div class="pbar pbar-lg mb-2" style="background:#e2e8f0"><div class="pfill" id="pfill-commit"></div></div>
+        <div class="flex justify-between text-[12.5px] font-bold text-slate-500">
+          <span>0</span><span class="text-amber-600">היעד: 100,000 — רישיון ביטוח בבעלות מופעל</span><span>100K</span>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-3 mt-7">
+          <div class="rounded-2xl bg-white border border-slate-200 p-4 text-center">
+            <div class="text-2xl mb-1">🎯</div>
+            <div class="text-[14px] font-extrabold text-slate-900">100K</div>
+            <div class="text-[12.5px] text-slate-600 leading-snug">רישיון ביטוח בבעלות מופעל</div>
+          </div>
+          <div class="rounded-2xl bg-white border border-slate-200 p-4 text-center">
+            <div class="text-2xl mb-1">🛡️</div>
+            <div class="text-[14px] font-extrabold text-slate-900">עד אז</div>
+            <div class="text-[12.5px] text-slate-600 leading-snug">כל שירותי RP פעילים לכל חבר — מהיום הראשון</div>
+          </div>
+          <div class="rounded-2xl bg-white border border-slate-200 p-4 text-center">
+            <div class="text-2xl mb-1">📜</div>
+            <div class="text-[14px] font-extrabold text-slate-900">שקיפות</div>
+            <div class="text-[12.5px] text-slate-600 leading-snug">
+              <button onclick="openCommit()" class="text-blue-600 font-bold underline underline-offset-2">בקשו לראות את ההתחייבות</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE POWER BEHIND THE MOVEMENT ===================== -->
+<section id="power" class="bg-slate-50 border-y border-slate-100">
+  <div class="wrap py-14 md:py-18">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-[26px] md:text-[38px] font-black text-slate-900 leading-[1.12] mb-3">למה דווקא אנחנו יכולים להוביל את המאבק הזה</h2>
+      <p class="text-[15px] md:text-[17px] text-slate-600 leading-relaxed">לא מתחילים מאפס. כבר היום אנחנו מנהלים את הבירוקרטיה עבור עשרות אלפי נהגים, בארץ ובעולם.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-10">
+      <div class="rounded-2xl bg-white border border-slate-200 p-5 text-center reveal">
+        <div class="stat-num text-[34px] md:text-[40px]" style="color:var(--rp-blue)"><span data-count="10000">0</span>+</div>
+        <div class="text-[13.5px] font-bold text-slate-700 mt-1 leading-snug">רכבים מנוהלים בישראל היום — כל הבירוקרטיה עליהם, עלינו</div>
+      </div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-5 text-center reveal">
+        <div class="stat-num text-[34px] md:text-[40px]" style="color:var(--rp-blue)">עשרות אלפי</div>
+        <div class="text-[13.5px] font-bold text-slate-700 mt-1 leading-snug">לקוחות פרטיים בעולם הרכב, דרך השותפים שלנו</div>
+      </div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-5 text-center reveal">
+        <div class="stat-num text-[26px] md:text-[30px] whitespace-nowrap" style="color:var(--rp-blue);line-height:1.1" dir="ltr"><span data-count="8000000">0</span></div>
+        <div class="text-[13.5px] font-bold text-slate-700 mt-1 leading-snug">רכבים מנוהלים ברחבי העולם בקבוצה</div>
+      </div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-5 text-center reveal">
+        <div class="stat-num text-[24px] md:text-[28px] whitespace-nowrap" style="color:var(--rp-blue);line-height:1.1" dir="ltr">$<span data-count="300000000">0</span></div>
+        <div class="text-[13.5px] font-bold text-slate-700 mt-1 leading-snug">נחסכו ללקוחות בהוצאות משפטיות ובמאבק מול בריונות בירוקרטית</div>
+      </div>
+    </div>
+
+    <!-- partners -->
+    <div class="text-[12px] font-bold text-slate-400 text-center mb-4">שותפי הפצה ולקוחות עסקיים</div>
+    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-10">
+      <img src="https://trademobile.co.il/_ipx/f_webp,s_178x56/static/logo-white.png" alt="Trademobile" class="h-6 object-contain invert" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'chip rounded-full px-4 py-1.5 text-[13px] font-bold',textContent:'Trademobile'}))">
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">Pango</span>
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">שטראוס</span>
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">סמלת</span>
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">Touch</span>
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">תיר השכרת רכב</span>
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">Leasecom</span>
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">עקיבא</span>
+      <span class="chip rounded-full px-4 py-1.5 text-[13px] font-bold">עיריית אשקלון</span>
+    </div>
+
+    <!-- insurance backers -->
+    <div class="rounded-3xl bg-[#0b1d34] text-white p-6 md:p-8">
+      <div class="grid md:grid-cols-2 gap-6 items-center">
+        <div>
+          <div class="text-[12px] font-extrabold text-amber-300 mb-2">הגב הביטוחי · בכפוף להגעה ליעד</div>
+          <h3 class="text-[20px] md:text-[24px] font-black mb-2">עם הגעה ל-100K — אלו שותפי הביטוח שיגבו אותנו</h3>
+          <p class="text-[14px] text-slate-300 leading-relaxed">כשנשיג את היעד, המוצר יגובה בשותפי ביטוח בינלאומיים בעלי ניסיון בדיוק בתחום הזה — ביטול דוחות, הגנה משפטית וחיסכון בהוצאות משפט ללקוחות.</p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center md:justify-end gap-3">
+          <span class="chip-d rounded-2xl px-5 py-3 text-[15px] font-black">dotsure<span class="text-amber-300">.</span></span>
+          <span class="chip-d rounded-2xl px-5 py-3 text-[15px] font-black">GetDismissed</span>
+          <span class="chip-d rounded-2xl px-4 py-2 text-[12px] font-bold">Badger Holdings</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WAITLIST FORM ===================== -->
+<section id="join" class="fight text-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-lines opacity-50"></div>
+  <div class="wrap relative py-14 md:py-18">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-7">
+        <h2 class="text-[28px] md:text-[40px] font-black mb-3 glow">שריינו את המקום שלכם במאבק</h2>
+        <p class="text-[15px] md:text-[17px] text-slate-200 leading-relaxed">הרשמה חינם לרשימת ההמתנה. הנרשמים מראש מקבלים גישה ראשונים — ותנאים מיוחדים בהשקה.</p>
+      </div>
+
+      <div class="bg-white text-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl">
+        <div id="wl-form">
+          <div class="grid md:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[13px] font-bold text-slate-800 mb-1.5">שם מלא</label>
+              <input class="field" type="text" placeholder="ישראל ישראלי">
+            </div>
+            <div>
+              <label class="block text-[13px] font-bold text-slate-800 mb-1.5">טלפון (וואטסאפ)</label>
+              <input class="field" type="tel" placeholder="050-0000000">
+            </div>
+            <div>
+              <label class="block text-[13px] font-bold text-slate-800 mb-1.5">אימייל</label>
+              <input class="field" type="email" placeholder="name@email.com">
+            </div>
+            <div>
+              <label class="block text-[13px] font-bold text-slate-800 mb-1.5">מספר רכב</label>
+              <input class="field" type="text" placeholder="12-345-67" required>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-[13px] font-bold text-slate-800 mb-1.5">עיר מגורים</label>
+              <input class="field" type="text" placeholder="העיר שלך">
+            </div>
+          </div>
+          <label class="flex items-start gap-2.5 mt-4 text-[13px] text-slate-600">
+            <input type="checkbox" class="mt-1 w-4 h-4 accent-blue-600" checked>
+            <span>אני מאשר/ת קבלת עדכונים על השקת המוצר ותנאים מיוחדים לנרשמים מראש.</span>
+          </label>
+          <button onclick="submitWaitlist()"
+                  class="btn-amber w-full text-center text-[17px] font-extrabold rounded-2xl px-8 py-4 mt-5">
+            אני מצטרף/ת למאבק ←
+          </button>
+          <p class="text-center text-[12px] text-slate-400 mt-3">חינם · ללא התחייבות · ביטול בכל עת</p>
+        </div>
+
+        <div id="wl-done" style="display:none" class="text-center py-4">
+          <div class="text-5xl mb-3">🛡️</div>
+          <h3 class="text-[22px] font-black text-slate-900 mb-1">אתה בפנים. ברוך הבא למאבק.</h3>
+          <p class="text-[15px] text-slate-600 mb-5">נעדכן אותך מהראשונים ברגע ש-MAX יוצא לדרך. עד אז — כל שירותי Road Protect פעילים עבורך.</p>
+
+          <!-- referral mechanic -->
+          <div class="rounded-2xl bg-amber-50 border border-amber-200 p-5 text-right">
+            <div class="text-[15px] font-black text-slate-900 mb-1">רוצה לעלות לראש התור?</div>
+            <p class="text-[13px] text-slate-600 mb-3">כל חבר שמצטרף דרך הקישור שלך מקדם אותך בתור — וכל <b>5 חברים</b> פותחים לך תנאי מייסדים משודרגים בהשקה.</p>
+            <div class="flex gap-2 mb-2">
+              <input id="ref-link" class="field text-[13px]" readonly value="https://roadprotect.co.il/max?ref=IL-4821">
+              <button onclick="copyRef()" class="btn-blue shrink-0 rounded-xl px-4 text-[14px] font-bold">העתק</button>
+            </div>
+            <div class="flex items-center justify-between text-[12.5px] text-slate-500">
+              <span>הזמנת <b class="text-amber-700">0 / 5</b> חברים</span>
+              <span id="ref-copied" class="text-emerald-600 font-bold" style="display:none">הקישור הועתק ✓</span>
+            </div>
+          </div>
+          <a href="https://wa.me/?text=הצטרפתי%20למאבק%20של%20Road%20Protect%20נגד%20הבריונות%20הבירוקרטית%20-%20בוא%20גם%20אתה%20https://roadprotect.co.il/max?ref=IL-4821" target="_blank" class="btn-wa inline-block text-center text-[15px] font-bold rounded-2xl px-7 py-3.5 mt-4">שתפו חבר בוואטסאפ ←</a>
+        </div>
+      </div>
+
+      <p class="text-[11.5px] text-slate-300/80 leading-snug mt-6 text-center max-w-xl mx-auto">
+        Road Protect אינו משרד עורכי דין; השירות מספק כלים לניהול וניסוח עצמי של ערעורים. כיסוי ההוצאות המשפטיות יינתן באמצעות שותף ביטוח / עו״ד מורשה, ותנאיו הסופיים ייקבעו בהשקה. המוצר בפיתוח וטרם זמין לרכישה.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="bg-white">
+  <div class="wrap py-14 md:py-16 max-w-3xl">
+    <h2 class="text-[24px] md:text-[32px] font-black text-slate-900 text-center mb-8">שאלות שעולות</h2>
+    <div class="space-y-3">
+      <details class="rounded-2xl border border-slate-200 bg-slate-50 p-5 group" open>
+        <summary class="font-extrabold text-slate-900 text-[16px] cursor-pointer list-none flex justify-between items-center">למה רשימת המתנה ולא פשוט לקנות עכשיו? <span class="text-blue-600 group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[14px] text-slate-600 mt-3 leading-relaxed">המוצר החדש מגיע עם ביטוח הוצאות משפטיות מלא. כדי להביא רישיון ביטוח בבעלות, בתנאים הכי טובים לכל החברים — אנחנו צריכים מסה. ככל שנהיה יותר, ההגנה לכולם חזקה יותר. ההצטרפות חינם, ושומרת לך מקום ותנאים מיוחדים בהשקה.</p>
+      </details>
+      <details class="rounded-2xl border border-slate-200 bg-slate-50 p-5 group">
+        <summary class="font-extrabold text-slate-900 text-[16px] cursor-pointer list-none flex justify-between items-center">מה אם לא תגיעו ל-100,000? <span class="text-blue-600 group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[14px] text-slate-600 mt-3 leading-relaxed">גם עד אז — אתם נהנים מכל שירותי Road Protect: רדאר 24/7 שמאתר כל דוח, ספיגת ריבית פיגורים, וניהול מלא של כל הבירוקרטיה מול הרשויות במקומכם (ובהמשך גם חיבור לתשלומי ארנונה ועוד). ההצטרפות חינם ולא מחייבת. את נוסח ההתחייבות המלא נשלח אישית לכל מי שמבקש לראות אותו.</p>
+      </details>
+      <details class="rounded-2xl border border-slate-200 bg-slate-50 p-5 group">
+        <summary class="font-extrabold text-slate-900 text-[16px] cursor-pointer list-none flex justify-between items-center">Road Protect זה משרד עורכי דין? <span class="text-blue-600 group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[14px] text-slate-600 mt-3 leading-relaxed">לא. אנחנו מספקים סביבה דיגיטלית וכלים לניסוח עצמי של ערעורים, וצוות מומחים שעוזר בניסוח. הכיסוי המשפטי במוצר החדש יינתן דרך שותף ביטוח / עו״ד מורשה. האחריות על הגשת הערעור היא שלך.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-[#0b1d34] text-slate-300">
+  <div class="wrap py-10">
+    <div class="flex flex-col md:flex-row justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-2 font-black text-[18px] text-white mb-2">🛡️ Road Protect</div>
+        <p class="text-[13px] text-slate-400 max-w-sm leading-relaxed">שקט נפשי לנהג הישראלי. מגנים עליכם מהבריונות הבירוקרטית.</p>
+      </div>
+      <div class="text-[13px] text-slate-400 leading-relaxed max-w-md">
+        Road Protect מספקת סביבה דיגיטלית וכלים טכנולוגיים לניהול ולניסוח עצמי של מסמכי ערעור בקשר לדוחות תנועה. השירות אינו מהווה ייעוץ משפטי, אינו ניתן במסגרת משרד עורכי דין ואינו כולל ייצוג מול רשויות בשמך. המוצר החדש בפיתוח וטרם זמין לרכישה.
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-8 pt-5 text-[12px] text-slate-500">© 2026 רוד פרוטקט בע״מ · כל הזכויות שמורות</div>
+  </div>
+</footer>
+
+<!-- ===================== COMMITMENT MODAL ===================== -->
+<div class="modal-bg" id="commitModal" onclick="if(event.target===this)closeCommit()">
+  <div class="bg-white rounded-3xl max-w-lg w-full p-7 md:p-9 shadow-2xl relative">
+    <button onclick="closeCommit()" class="absolute top-4 left-4 text-slate-400 text-xl">✕</button>
+    <div class="seal w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto text-2xl">📜</div>
+    <h3 class="text-[22px] font-black text-slate-900 text-center mb-2">ההתחייבות של Road Protect</h3>
+    <p class="text-[13px] text-slate-500 text-center mb-5">קיים מסמך התחייבות רשמי — ואנחנו שולחים אותו אישית למי שמבקש</p>
+    <div class="space-y-3 text-[14px] text-slate-700 leading-relaxed">
+      <p>יש לנו <b>מסמך התחייבות רשמי</b> שמפרט בדיוק למה אנחנו מתחייבים כשנגיע ל-<b>100,000 חברים</b> — כולל הבאת רישיון ביטוח בבעלות שיגבה את ביטוח ההגנה המשפטית.</p>
+      <p class="text-[13px] text-slate-600 bg-slate-50 rounded-xl p-3">מתוך שקיפות מלאה — נשמח להראות אותו. השאירו פרטים ונשלח לכם את המסמך אישית, או בקשו אותו בוואטסאפ.</p>
+    </div>
+    <a href="#join" onclick="closeCommit()" class="btn-amber block text-center text-[16px] font-extrabold rounded-2xl px-6 py-3.5 mt-6">בקשו לקבל את ההתחייבות</a>
+    <a href="#" class="btn-wa block text-center text-[15px] font-bold rounded-2xl px-6 py-3 mt-2">בקשה בוואטסאפ</a>
+  </div>
+</div>
+
+<script>
+  // ===== placeholder seed numbers — REPLACE with real waitlist count =====
+  var CURRENT = 14732, TARGET = 100000;
+
+  function animateTo(el, target, dur){
+    var t0=performance.now();
+    function tick(n){var p=Math.min(1,(n-t0)/dur),e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*e).toLocaleString('en-US');
+      if(p<1)requestAnimationFrame(tick);}
+    requestAnimationFrame(tick);
+  }
+  function animateCount(el){animateTo(el,+el.dataset.count,1100);}
+
+  // hero + commit counters
+  window.addEventListener('load',function(){
+    animateTo(document.getElementById('hero-count'),CURRENT,1400);
+    animateTo(document.getElementById('big-count'),CURRENT,1400);
+    setTimeout(function(){document.getElementById('pfill-hero').style.width=(CURRENT/TARGET*100)+'%';},200);
+  });
+
+  // reveal + data-count on scroll
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting){
+      en.target.classList.add('in');
+      en.target.querySelectorAll&&en.target.querySelectorAll('[data-count]').forEach(function(c){if(!c.dataset.done){c.dataset.done=1;animateCount(c);}});
+      if(en.target.dataset&&en.target.dataset.count&&!en.target.dataset.done){en.target.dataset.done=1;animateCount(en.target);}
+    }
+  });},{threshold:.35});
+  document.querySelectorAll('.reveal,[data-count]').forEach(function(el){io.observe(el);});
+
+  // commit section progress (scaled to 100K axis)
+  var cio=new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting&&!en.target.dataset.done){en.target.dataset.done=1;
+      animateTo(document.getElementById('commit-count'),CURRENT,1400);
+      setTimeout(function(){document.getElementById('pfill-commit').style.width=(CURRENT/TARGET*100)+'%';},200);
+    }
+  });},{threshold:.4});
+  cio.observe(document.getElementById('commit'));
+
+  function openCommit(){document.getElementById('commitModal').classList.add('on');}
+  function closeCommit(){document.getElementById('commitModal').classList.remove('on');}
+
+  // waitlist submit -> show referral state
+  function submitWaitlist(){
+    document.getElementById('wl-form').style.display='none';
+    document.getElementById('wl-done').style.display='block';
+    document.getElementById('wl-done').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  function copyRef(){
+    var i=document.getElementById('ref-link');i.select();
+    try{document.execCommand('copy');}catch(e){}
+    var c=document.getElementById('ref-copied');c.style.display='inline';
+    setTimeout(function(){c.style.display='none';},2000);
+  }
+
+  // founders'-terms countdown (placeholder: 6 days from page load)
+  (function(){
+    var end=new Date().getTime()+6*24*60*60*1000;
+    function tick(){
+      var d=end-new Date().getTime();if(d<0)d=0;
+      var days=Math.floor(d/86400000),h=Math.floor(d%86400000/3600000),m=Math.floor(d%3600000/60000),s=Math.floor(d%60000/1000);
+      var el=document.getElementById('countdown');
+      if(el)el.textContent=days+' ימים '+('0'+h).slice(-2)+':'+('0'+m).slice(-2)+':'+('0'+s).slice(-2);
+    }
+    tick();setInterval(tick,1000);
+  })();
+</script>
+</body>
+</html>
