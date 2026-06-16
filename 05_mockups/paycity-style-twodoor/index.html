@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>BillProtect — אזרחים מחוברים</title>
+  <meta name="description" content="BillProtect — מעקב, ערעור וניהול דוחות (מבית RoadProtect), ותשלום חשבונות ושירותים. אותו עולם, חוויה אחרת." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --orange:#EE9A3C; --orange-d:#d98a2c; --orange-circle:#EFA24C;
+      --cyan:#4DB8D0; --cyan-d:#37a6c0;
+      --hteal-a:#9DBFC5; --hteal-b:#A9C4C8; --hpurp-a:#BCACCC; --hpurp-b:#AEA0C3;
+      --ink:#2f3b47; --charcoal:#3c3c3c; --text:#5a6470; --muted:#8a929c;
+      --footer:#28313d; --line:#e6eaf0;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Heebo','Inter',sans-serif;color:var(--text);background:#fff;line-height:1.7;
+      -webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:15px}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1180px;margin:0 auto;padding:0 22px}
+    h1,h2,h3,h4,h5,h6{font-family:'Heebo',sans-serif;color:var(--ink)}
+
+    /* ===== Header ===== */
+    header{background:#fff;border-bottom:1px solid #f0f0f0;position:sticky;top:0;z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:88px;direction:ltr}
+    .brand{display:flex;flex-direction:column;line-height:1}
+    .logo-wm{font-family:'Inter';font-style:italic;font-weight:700;font-size:32px;color:#555;position:relative;letter-spacing:-.5px}
+    .logo-wm span{color:#3f3f3f}
+    .logo-wm .dot{position:absolute;top:3px;right:-11px;width:9px;height:9px;border-radius:50%;background:var(--orange)}
+    .logo-sub{font-family:'Heebo';font-style:italic;font-size:12.5px;color:#a6acb3;letter-spacing:2px;margin-top:4px;text-align:right;direction:rtl}
+    .nav-actions{display:flex;align-items:center;gap:18px}
+    .ql{position:relative}
+    .ql > a{display:flex;align-items:center;gap:6px;font-family:'Heebo';font-weight:600;font-size:13px;letter-spacing:1px;color:#4a4a4a;text-transform:uppercase}
+    .ql > a::after{content:"⌄";font-size:13px;position:relative;top:-2px;opacity:.7}
+    .submenu{position:absolute;top:calc(100% + 14px);left:0;min-width:230px;background:#fff;border-top:3px solid var(--orange);
+      border-radius:0 0 8px 8px;box-shadow:0 16px 36px rgba(31,39,51,.16);list-style:none;padding:6px 0;direction:rtl;
+      opacity:0;visibility:hidden;transform:translateY(8px);transition:all .22s}
+    .ql:hover .submenu{opacity:1;visibility:visible;transform:translateY(0)}
+    .submenu li a{display:block;padding:11px 22px;font-size:13.5px;font-weight:500;color:var(--ink)}
+    .submenu li a:hover{background:#fff5ea;color:var(--orange-d)}
+    .btn-pill{font-family:'Heebo';font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;
+      border-radius:50px;padding:11px 30px;cursor:pointer;transition:all .25s;border:1.5px solid transparent;white-space:nowrap}
+    .btn-login{background:#fff;border-color:#d2d2d2;color:#3c3c3c}
+    .btn-login:hover{border-color:#9aa0a6;color:#000}
+    .btn-register{background:var(--orange);color:#fff}
+    .btn-register:hover{background:var(--orange-d)}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+    .hamburger span{width:25px;height:3px;background:var(--ink);border-radius:2px}
+
+    /* ===== Hero split ===== */
+    .hero{position:relative;height:clamp(380px,44vw,470px);overflow:hidden;
+      background:linear-gradient(90deg,var(--hteal-a) 0%,var(--hteal-b) 49.9%,var(--hpurp-a) 50.1%,var(--hpurp-b) 100%)}
+    .hero-phrase{position:absolute;top:54%;transform:translateY(-50%);color:#fff;font-weight:800;
+      font-size:clamp(28px,4.7vw,60px);letter-spacing:-.5px;line-height:1;z-index:2;text-shadow:0 1px 14px rgba(0,0,0,.08)}
+    .hero-phrase.left{left:5.5%}
+    .hero-phrase.right{right:5.5%;text-align:right}
+    .hero-person{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:clamp(250px,27vw,375px);height:95%;z-index:3;
+      background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=750&q=80');
+      background-size:cover;background-position:center top;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);
+      mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
+    .hero-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.55);transform:translateX(-50%);z-index:4}
+    .hero-cta{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;gap:8px;z-index:5;direction:ltr}
+    .cta-pill{padding:13px 38px;border-radius:50px;font-family:'Heebo';font-weight:600;font-size:16px;color:#fff;
+      box-shadow:0 10px 26px rgba(0,0,0,.22);transition:transform .25s}
+    .cta-pill:hover{transform:translateY(-2px)}
+    .cta-login{background:var(--charcoal)}
+    .cta-register{background:var(--orange)}
+
+    /* ===== Two service circles ===== */
+    .circles{padding:74px 0 56px;background:#fff}
+    .circles-row{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;justify-content:space-between;align-items:flex-start;
+      direction:ltr;flex-wrap:wrap;gap:36px}
+    .circle-col{display:flex;flex-direction:column;align-items:center;direction:rtl;flex:0 0 auto}
+    .circle{width:clamp(240px,23vw,300px);aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;
+      justify-content:center;color:#fff;text-align:center;padding:30px;text-decoration:none;
+      box-shadow:0 22px 46px rgba(0,0,0,.16);transition:transform .35s,box-shadow .35s}
+    .circle:hover{transform:translateY(-8px) scale(1.02)}
+    .circle.fines{background:var(--cyan)}
+    .circle.fines:hover{box-shadow:0 30px 60px rgba(77,184,208,.45)}
+    .circle.utilities{background:var(--orange-circle)}
+    .circle.utilities:hover{box-shadow:0 30px 60px rgba(239,162,76,.45)}
+    .circle .ico{width:62px;height:62px;border-radius:50%;border:2px solid rgba(255,255,255,.85);display:flex;
+      align-items:center;justify-content:center;margin-bottom:18px}
+    .circle .ico svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.7}
+    .circle h3{font-size:18px;font-weight:700;letter-spacing:.4px;margin-bottom:20px;line-height:1.3}
+    .circle .read-more{background:#fff;border-radius:50px;padding:9px 26px;font-family:'Heebo';font-size:12px;font-weight:700;
+      letter-spacing:.6px;transition:all .25s}
+    .circle.fines .read-more{color:var(--cyan-d)}
+    .circle.utilities .read-more{color:var(--orange-d)}
+    .circle:hover .read-more{transform:scale(1.05)}
+    .circle-brand{margin-top:18px;font-family:'Inter';font-weight:600;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+    .circle-brand b{color:var(--ink);font-weight:700}
+    .circle-brand .by{font-family:'Heebo';font-weight:400}
+
+    /* ===== About ===== */
+    .about{padding:34px 0 84px;background:#fff}
+    .about-grid{max-width:1120px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+    .about-label{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .about-label::before{content:"";width:50px;height:2px;background:var(--orange)}
+    .about-label span{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
+    .about h2{font-size:29px;font-weight:800;color:var(--ink);margin-bottom:20px;line-height:1.3}
+    .about p{color:var(--text);font-size:15px;margin-bottom:16px}
+    .about p b{color:var(--ink)}
+    .about .stats{display:flex;gap:30px;margin-top:26px}
+    .about .stats b{font-family:'Inter';font-size:30px;color:var(--cyan-d);display:block;line-height:1}
+    .about .stats span{font-size:13.5px;color:var(--muted)}
+    .about-img{border-radius:10px;overflow:hidden;box-shadow:0 22px 54px rgba(31,39,51,.22);min-height:340px;
+      background:linear-gradient(160deg,rgba(47,59,71,.25),rgba(77,184,208,.18)),
+        url('https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1100&q=80');
+      background-size:cover;background-position:center}
+
+    /* ===== App badges ===== */
+    .apps{padding:54px 0;background:#f6f8fa;text-align:center}
+    .apps h3{font-size:21px;font-weight:800;margin-bottom:6px}
+    .apps p{color:var(--muted);margin-bottom:24px}
+    .badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .store{display:inline-flex;align-items:center;gap:11px;background:var(--ink);color:#fff;padding:11px 22px;border-radius:10px;transition:transform .25s}
+    .store:hover{transform:translateY(-3px)}
+    .store svg{width:24px;height:24px;fill:#fff}
+    .store .t{text-align:right;line-height:1.15}
+    .store .t small{display:block;font-size:10px;opacity:.8}
+    .store .t b{font-family:'Inter';font-size:16px;font-weight:600;color:#fff}
+
+    /* ===== Footer ===== */
+    .footer{background:var(--footer);color:rgba(255,255,255,.7);padding:58px 0 0}
+    .footer-grid{max-width:1180px;margin:0 auto;padding:0 22px 44px;display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1fr;gap:40px}
+    .footer .logo-wm{color:#cfd5db;font-size:26px}
+    .footer .logo-wm span{color:#fff}
+    .footer .fcopy{font-size:14px;line-height:1.7;max-width:300px;margin-top:14px}
+    .footer h5{font-size:14px;font-weight:700;color:#fff;margin-bottom:18px}
+    .footer ul{list-style:none}
+    .footer ul li{margin-bottom:11px}
+    .footer a{color:rgba(255,255,255,.7);transition:color .2s;font-size:14px}
+    .footer a:hover{color:var(--orange)}
+    .fcontact .row{display:flex;align-items:center;gap:11px;margin-bottom:14px;font-size:14px}
+    .fcontact .ico{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fcontact .ico svg{width:16px;height:16px;stroke:var(--orange)}
+    .fsocial{display:flex;gap:11px}
+    .fsocial a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+    .fsocial a:hover{background:var(--orange)}
+    .fsocial svg{width:18px;height:18px;fill:#fff}
+    .subfooter{border-top:1px solid rgba(255,255,255,.12)}
+    .subfooter .row{max-width:1180px;margin:0 auto;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(255,255,255,.55)}
+    .subfooter ul{display:flex;gap:14px;list-style:none}
+    .disclaimer{font-size:12px;color:rgba(255,255,255,.38);text-align:center;padding:0 22px 22px}
+
+    .totop{position:fixed;bottom:18px;left:18px;width:44px;height:44px;border-radius:8px;background:var(--orange);color:#fff;
+      display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(238,154,60,.45);z-index:60;font-size:19px}
+
+    @media(max-width:860px){
+      .nav-actions{display:none}.hamburger{display:flex}
+      .hero-phrase{font-size:clamp(22px,6vw,34px)}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+    }
+    @media(max-width:560px){
+      .circles-row{justify-content:center}
+      .about-grid{grid-template-columns:1fr;gap:30px}
+      .footer-grid{grid-template-columns:1fr}
+      .hero-person{width:200px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="logo-wm">Bill<span>Protect</span><i class="dot"></i></span>
+        <span class="logo-sub">אזרחים מחוברים</span>
+      </a>
+      <div class="nav-actions">
+        <div class="ql">
+          <a href="#">בדיקה מהירה</a>
+          <ul class="submenu">
+            <li><a href="#">חיפוש לפי מספר דוח</a></li>
+            <li><a href="#">חיפוש לפי תעודת זהות</a></li>
+            <li><a href="#">חיפוש לפי מספר רכב</a></li>
+          </ul>
+        </div>
+        <a href="#" class="btn-pill btn-login">התחברות</a>
+        <a href="#" class="btn-pill btn-register">הרשמה</a>
+      </div>
+      <button class="hamburger" aria-label="תפריט"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== Hero split ===== -->
+  <section class="hero">
+    <span class="hero-phrase left">אותו עולם.</span>
+    <span class="hero-phrase right">חוויה אחרת.</span>
+    <div class="hero-person" aria-hidden="true"></div>
+    <div class="hero-divider"></div>
+    <div class="hero-cta">
+      <a href="#" class="cta-pill cta-login">התחברות</a>
+      <a href="#" class="cta-pill cta-register">הרשמה</a>
+    </div>
+  </section>
+
+  <!-- ===== Two service circles ===== -->
+  <section class="circles" id="services">
+    <div class="circles-row">
+
+      <!-- LEFT: fines (cyan) -->
+      <div class="circle-col">
+        <a href="#" class="circle fines">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="8" width="14" height="11" rx="2"/><circle cx="10" cy="13.5" r="3"/>
+              <path d="M17 11l4-2v8l-4-2"/><path d="M7 8l1.2-2h3.6L13 8"/>
+            </svg>
+          </span>
+          <h3>מעקב וערעור דוחות</h3>
+          <span class="read-more">מידע נוסף</span>
+        </a>
+        <span class="circle-brand"><span class="by">מבית</span> <b>RoadProtect</b></span>
+      </div>
+
+      <!-- RIGHT: utilities (orange) -->
+      <div class="circle-col">
+        <a href="#" class="circle utilities">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2h12l1 5H5z"/><path d="M5 7v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7"/><path d="M9 11h6"/>
+            </svg>
+          </span>
+          <h3>תשלום חשבונות ושירותים</h3>
+          <span class="read-more">מידע נוסף</span>
+        </a>
+        <span class="circle-brand"><span class="by">מבית</span> <b>BillProtect</b></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div>
+        <div class="about-label"><span>מי אנחנו</span></div>
+        <h2>אזרחים מחוברים, מחוברים לחיים</h2>
+        <p>BillProtect נולדה מתוך רעיון פשוט: אזרח מחובר הוא אזרח רגוע. במקום לרדוף אחרי דוחות, אגרות וחשבונות שמתפזרים בין אתרים, דואר והודעות — הכול מגיע אליכם למקום אחד.</p>
+        <p>המעקב, הערעור וניהול הדוחות מופעלים על ידי <b>RoadProtect</b> — הראדאר שסורק 24/7 את מאגרי המשטרה ועשרות העיריות ומתריע ברגע שנרשם דוח על שמכם. לצידו, תשלום החשבונות והשירותים — מאובטח, מהיר, בלי תורים.</p>
+        <div class="stats">
+          <div><b>30,000+</b><span>אזרחים מחוברים</span></div>
+          <div><b>80+</b><span>עיריות במעקב</span></div>
+          <div><b>24/7</b><span>ראדאר פעיל</span></div>
+        </div>
+      </div>
+      <div class="about-img" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== App badges ===== -->
+  <section class="apps">
+    <div class="container">
+      <h3>האפליקציה בכיס שלך</h3>
+      <p>כל הדוחות, ההתראות והתשלומים — גם מהנייד.</p>
+      <div class="badges">
+        <a href="#" class="store">
+          <svg viewBox="0 0 24 24"><path d="M17.05 12.5c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.2.7-.7 0-1.7-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.5 2.5-.4 6.3 1 8.4.7 1 1.5 2.1 2.5 2.1 1 0 1.4-.6 2.6-.6 1.2 0 1.5.6 2.6.6 1.1 0 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4-.1 0-2.1-.8-2.1-3.1zM15 6.3c.5-.7.9-1.6.8-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.5-.8 2.5.9.1 1.8-.4 2.4-1.1z"/></svg>
+          <span class="t"><small>הורידו ב-</small><b>App Store</b></span>
+        </a>
+        <a href="#" class="store">
+          <svg viewBox="0 0 24 24"><path d="M3.6 2.3 13 12 3.6 21.7c-.3-.2-.5-.6-.5-1V3.3c0-.4.2-.8.5-1zm10.5 10.4 2.6 2.6-9 5.1 6.4-7.7zm0-1.4L7.7 3.6l9 5.1-2.6 2.6zm1 .7 2.9-1.7c.6-.3.6-1.1 0-1.4l-2.4-1.4-2.9 2.9 2.4 2z"/></svg>
+          <span class="t"><small>זמין ב-</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer-grid">
+      <div>
+        <span class="logo-wm">Bill<span>Protect</span></span>
+        <p class="fcopy">המערכת שמחברת אזרחים לכל מה שקורה עם הרכב שלהם — מעקב וערעור דוחות מבית RoadProtect, ותשלומי רכב ואגרות, הכול במקום אחד.</p>
+      </div>
+      <div>
+        <h5>ניווט</h5>
+        <ul>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#services">השירותים שלנו</a></li>
+          <li><a href="#">שאלות נפוצות</a></li>
+          <li><a href="#">רפורמת התנועה 2026</a></li>
+        </ul>
+      </div>
+      <div class="fcontact">
+        <h5>יצירת קשר</h5>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <a href="tel:+972000000000">*1234 · שירות לקוחות</a>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span>
+          <a href="mailto:support@billprotect.co.il">support@billprotect.co.il</a>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span>רחוב הברזל 30, תל אביב</span>
+        </div>
+      </div>
+      <div>
+        <h5>עקבו אחרינו</h5>
+        <div class="fsocial">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2H21l-6.5 7.4L22 22h-6.3l-4.9-6.4L5 22H2.3l7-8L2 2h6.5l4.4 5.9L18.2 2zm-1.1 18h1.6L7 3.8H5.3L17.1 20z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.1 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.5L.1 24zM6.6 20l.4.2a9.9 9.9 0 1 0-3.4-3.4l.2.4-1 3.7 3.8-.9zM18 14.3c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="subfooter">
+      <div class="row">
+        <span>© 2026 BillProtect · כל הזכויות שמורות</span>
+        <ul>
+          <li><a href="#">תנאי שימוש</a></li>
+          <li><span style="opacity:.4">|</span></li>
+          <li><a href="#">מדיניות פרטיות</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">שירות הדוחות RoadProtect אינו משרד עורכי דין. הוא מספק כלים להכנת ערעורים — הלקוח חותם ומגיש בעצמו.</div>
+  </footer>
+
+  <a href="#" class="totop" aria-label="חזרה למעלה">↑</a>
+
+</body>
+</html>
