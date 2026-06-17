@@ -13,6 +13,7 @@
       --orange:#EE9A3C; --orange-d:#d98a2c; --orange-circle:#EFA24C;
       --cyan:#4DB8D0; --cyan-d:#37a6c0;
       --hteal-a:#9DBFC5; --hteal-b:#A9C4C8; --hpurp-a:#BCACCC; --hpurp-b:#AEA0C3;
+      --purple-c:#9B82BD; --purple-d:#7d63a3;
       --ink:#2f3b47; --charcoal:#3c3c3c; --text:#5a6470; --muted:#8a929c;
       --footer:#28313d; --line:#e6eaf0;
     }
@@ -71,31 +72,43 @@
     .cta-login{background:var(--charcoal)}
     .cta-register{background:var(--orange)}
 
-    /* ===== Two service circles ===== */
-    .circles{padding:74px 0 56px;background:#fff}
-    .circles-row{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;justify-content:space-between;align-items:flex-start;
-      direction:ltr;flex-wrap:wrap;gap:36px}
+    /* ===== Service circles (3: big center + two sides) ===== */
+    .circles{padding:72px 0 58px;background:#fff}
+    .circles-row{max-width:1100px;margin:0 auto;padding:0 22px;display:flex;justify-content:center;align-items:center;
+      direction:ltr;flex-wrap:wrap;gap:clamp(24px,4vw,54px)}
     .circle-col{display:flex;flex-direction:column;align-items:center;direction:rtl;flex:0 0 auto}
-    .circle{width:clamp(240px,23vw,300px);aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;
-      justify-content:center;color:#fff;text-align:center;padding:30px;text-decoration:none;
-      box-shadow:0 22px 46px rgba(0,0,0,.16);transition:transform .35s,box-shadow .35s}
+    .circle{aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      color:#fff;text-align:center;padding:26px;text-decoration:none;box-shadow:0 22px 46px rgba(0,0,0,.16);
+      transition:transform .35s,box-shadow .35s}
+    .circle.sm{width:clamp(208px,20vw,250px)}
+    .circle.lg{width:clamp(272px,26vw,332px)}
     .circle:hover{transform:translateY(-8px) scale(1.02)}
     .circle.fines{background:var(--cyan)}
-    .circle.fines:hover{box-shadow:0 30px 60px rgba(77,184,208,.45)}
-    .circle.utilities{background:var(--orange-circle)}
-    .circle.utilities:hover{box-shadow:0 30px 60px rgba(239,162,76,.45)}
-    .circle .ico{width:62px;height:62px;border-radius:50%;border:2px solid rgba(255,255,255,.85);display:flex;
-      align-items:center;justify-content:center;margin-bottom:18px}
-    .circle .ico svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.7}
-    .circle h3{font-size:18px;font-weight:700;letter-spacing:.4px;margin-bottom:20px;line-height:1.3}
+    .circle.fines:hover{box-shadow:0 32px 62px rgba(77,184,208,.45)}
+    .circle.payments{background:var(--orange-circle)}
+    .circle.payments:hover{box-shadow:0 30px 60px rgba(239,162,76,.45)}
+    .circle.legal{background:var(--purple-c)}
+    .circle.legal:hover{box-shadow:0 30px 60px rgba(155,130,189,.45)}
+    .circle .ico{border-radius:50%;border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .circle.sm .ico{width:56px;height:56px}
+    .circle.lg .ico{width:66px;height:66px}
+    .circle .ico svg{stroke:#fff;fill:none;stroke-width:1.7}
+    .circle.sm .ico svg{width:27px;height:27px}
+    .circle.lg .ico svg{width:32px;height:32px}
+    .circle h3{font-weight:700;letter-spacing:.3px;margin-bottom:18px;line-height:1.3}
+    .circle.sm h3{font-size:16.5px}
+    .circle.lg h3{font-size:20px}
     .circle .read-more{background:#fff;border-radius:50px;padding:9px 26px;font-family:'Heebo';font-size:12px;font-weight:700;
-      letter-spacing:.6px;transition:all .25s}
+      letter-spacing:.6px;transition:all .25s;white-space:nowrap}
+    .circle.lg .read-more{font-size:13px;padding:11px 30px}
     .circle.fines .read-more{color:var(--cyan-d)}
-    .circle.utilities .read-more{color:var(--orange-d)}
+    .circle.payments .read-more{color:var(--orange-d)}
+    .circle.legal .read-more{color:var(--purple-d)}
     .circle:hover .read-more{transform:scale(1.05)}
-    .circle-brand{margin-top:18px;font-family:'Inter';font-weight:600;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+    .circle-brand{margin-top:16px;min-height:20px;font-family:'Inter';font-weight:600;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
     .circle-brand b{color:var(--ink);font-weight:700}
     .circle-brand .by{font-family:'Heebo';font-weight:400}
+    @media(max-width:760px){.circles-row{flex-direction:column}.circle-col.center{order:-1}}
 
     /* ===== About ===== */
     .about{padding:34px 0 84px;background:#fff}
@@ -202,37 +215,52 @@
     </div>
   </section>
 
-  <!-- ===== Two service circles ===== -->
+  <!-- ===== Service circles (big center + two sides) ===== -->
   <section class="circles" id="services">
     <div class="circles-row">
 
-      <!-- LEFT: fines (cyan) -->
+      <!-- LEFT: legal insurance (purple) -->
       <div class="circle-col">
-        <a href="#" class="circle fines">
+        <a href="#" class="circle sm legal">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 4.5v15"/><path d="M8 19.5h8"/><path d="M4.5 7h15"/><circle cx="12" cy="4" r="1.2"/>
+              <path d="M4.5 7l-2.1 4.4a2.5 2.5 0 0 0 4.2 0z"/><path d="M19.5 7l-2.1 4.4a2.5 2.5 0 0 0 4.2 0z"/>
+            </svg>
+          </span>
+          <h3>ביטוח משפטי</h3>
+          <span class="read-more">מידע נוסף</span>
+        </a>
+        <span class="circle-brand"></span>
+      </div>
+
+      <!-- CENTER: show my fines (cyan, big) -->
+      <div class="circle-col center">
+        <a href="#" class="circle lg fines">
           <span class="ico">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="8" width="14" height="11" rx="2"/><circle cx="10" cy="13.5" r="3"/>
               <path d="M17 11l4-2v8l-4-2"/><path d="M7 8l1.2-2h3.6L13 8"/>
             </svg>
           </span>
-          <h3>מעקב וערעור דוחות</h3>
-          <span class="read-more">מידע נוסף</span>
+          <h3>הצגת הדוחות שלי</h3>
+          <span class="read-more">כניסה לחשבון ←</span>
         </a>
         <span class="circle-brand"><span class="by">מבית</span> <b>RoadProtect</b></span>
       </div>
 
-      <!-- RIGHT: utilities (orange) -->
+      <!-- RIGHT: payments to municipalities (orange) -->
       <div class="circle-col">
-        <a href="#" class="circle utilities">
+        <a href="#" class="circle sm payments">
           <span class="ico">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2h12l1 5H5z"/><path d="M5 7v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7"/><path d="M9 11h6"/>
+              <path d="M3 9l9-5 9 5"/><path d="M5 9v9M9.5 9v9M14.5 9v9M19 9v9"/><path d="M3.5 18h17"/><path d="M2.5 21h19"/>
             </svg>
           </span>
-          <h3>תשלום חשבונות ושירותים</h3>
+          <h3>תשלומים לעיריות</h3>
           <span class="read-more">מידע נוסף</span>
         </a>
-        <span class="circle-brand"><span class="by">מבית</span> <b>BillProtect</b></span>
+        <span class="circle-brand"></span>
       </div>
 
     </div>
