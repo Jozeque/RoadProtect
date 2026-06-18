@@ -35,6 +35,7 @@
     .nav-actions{display:flex;align-items:center;gap:22px}
     .nav-link{font-family:'Heebo';font-weight:600;font-size:13px;letter-spacing:1px;color:#4a4a4a;text-transform:uppercase}
     .nav-link:hover{color:var(--orange-d)}
+    .nav-link.active{color:var(--orange-d)}
     .ql{position:relative}
     .ql > a{display:flex;align-items:center;gap:6px;font-family:'Heebo';font-weight:600;font-size:13px;letter-spacing:1px;color:#4a4a4a;text-transform:uppercase;cursor:pointer}
     .ql > a::after{content:"⌄";font-size:13px;position:relative;top:-2px;opacity:.7}
@@ -184,7 +185,8 @@
         <span class="logo-sub">אזרחים מחוברים</span>
       </a>
       <div class="nav-actions">
-        <a href="index.html#services" class="nav-link">השירותים שלי</a>
+        <a href="fines.html" class="nav-link active">הדוחות שלי</a>
+        <a href="vehicles.html" class="nav-link">הרכבים שלי</a>
         <div class="ql">
           <a>בדיקה מהירה</a>
           <ul class="submenu">
@@ -201,8 +203,9 @@
           <span class="avatar">מ</span>
           <span class="uname">מלכה שובלי</span>
           <ul class="umenu">
+            <li><a href="fines.html">הדוחות שלי</a></li>
+            <li><a href="vehicles.html">הרכבים שלי</a></li>
             <li><a href="#">הפרופיל שלי</a></li>
-            <li><a href="index.html#services">השירותים שלי</a></li>
             <li><a href="index.html">יציאה</a></li>
           </ul>
         </div>
