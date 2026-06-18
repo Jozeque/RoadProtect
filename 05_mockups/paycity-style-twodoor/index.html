@@ -87,8 +87,8 @@
     .circle.fines:hover{box-shadow:0 32px 62px rgba(77,184,208,.45)}
     .circle.payments{background:var(--orange-circle)}
     .circle.payments:hover{box-shadow:0 30px 60px rgba(239,162,76,.45)}
-    .circle.legal{background:var(--purple-c)}
-    .circle.legal:hover{box-shadow:0 30px 60px rgba(155,130,189,.45)}
+    .circle.authority{background:var(--purple-c)}
+    .circle.authority:hover{box-shadow:0 30px 60px rgba(155,130,189,.45)}
     .circle .ico{border-radius:50%;border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
     .circle.sm .ico{width:56px;height:56px}
     .circle.lg .ico{width:66px;height:66px}
@@ -103,11 +103,18 @@
     .circle.lg .read-more{font-size:13px;padding:11px 30px}
     .circle.fines .read-more{color:var(--cyan-d)}
     .circle.payments .read-more{color:var(--orange-d)}
-    .circle.legal .read-more{color:var(--purple-d)}
+    .circle.authority .read-more{color:var(--purple-d)}
     .circle:hover .read-more{transform:scale(1.05)}
     .circle-brand{margin-top:16px;min-height:20px;font-family:'Inter';font-weight:600;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
     .circle-brand b{color:var(--ink);font-weight:700}
     .circle-brand .by{font-family:'Heebo';font-weight:400}
+    .join-counter{margin-top:16px;width:clamp(208px,20vw,250px);display:flex;flex-direction:column;align-items:center;gap:7px}
+    .jc-bar{width:100%;height:7px;border-radius:50px;background:#ece7f3;overflow:hidden}
+    .jc-bar span{display:block;height:100%;border-radius:50px;background:linear-gradient(90deg,var(--purple-c),var(--purple-d));
+      width:27.5%;animation:jcFill 1.5s cubic-bezier(.2,.7,.3,1) .35s both}
+    @keyframes jcFill{from{width:0}}
+    .jc-text{font-family:'Heebo';font-size:12.5px;color:var(--muted);letter-spacing:.2px}
+    .jc-text b{font-family:'Inter';font-weight:700;font-size:14.5px;color:var(--purple-d);margin-inline-end:3px}
     @media(max-width:760px){.circles-row{flex-direction:column}.circle-col.center{order:-1}}
 
     /* ===== About ===== */
@@ -219,19 +226,22 @@
   <section class="circles" id="services">
     <div class="circles-row">
 
-      <!-- LEFT: legal insurance (purple) -->
+      <!-- LEFT: authority joins the platform (purple) -->
       <div class="circle-col">
-        <a href="#" class="circle sm legal">
+        <a href="#" class="circle sm authority">
           <span class="ico">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 4.5v15"/><path d="M8 19.5h8"/><path d="M4.5 7h15"/><circle cx="12" cy="4" r="1.2"/>
-              <path d="M4.5 7l-2.1 4.4a2.5 2.5 0 0 0 4.2 0z"/><path d="M19.5 7l-2.1 4.4a2.5 2.5 0 0 0 4.2 0z"/>
+              <circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="5.5" r="2.4"/><circle cx="18" cy="18.5" r="2.4"/>
+              <path d="M8.1 10.9l7.8-4M8.1 13.1l7.8 4"/>
             </svg>
           </span>
-          <h3>ביטוח משפטי</h3>
-          <span class="read-more">מידע נוסף</span>
+          <h3>הצטרפות הרשות לממשק</h3>
+          <span class="read-more">להצטרפות</span>
         </a>
-        <span class="circle-brand"></span>
+        <div class="join-counter">
+          <div class="jc-bar"><span></span></div>
+          <div class="jc-text"><b>22/80</b> כבר מחוברים אלינו</div>
+        </div>
       </div>
 
       <!-- CENTER: show my fines (cyan, big) -->
